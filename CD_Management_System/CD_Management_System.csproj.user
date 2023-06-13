@@ -4,5 +4,8 @@
     <Compile Update="AlbumManagement.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SongManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
