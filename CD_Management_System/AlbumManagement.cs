@@ -84,14 +84,14 @@ namespace CD_Management_System
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(txtAlbumId.Text)).FirstOrDefault();
-            if (txtAlbumId.Text.Equals(cdAlbum.AlbumId))
-                _albumService.Delete(cdAlbum);
+            var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
+            if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
+                _albumService.Remove(cdAlbum);
             refreshList();
 
         }
 
-        private void dgvAlbum_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAlbum_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = dgvAlbum[0, e.RowIndex].Value;
             var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(id)).FirstOrDefault();
@@ -105,6 +105,28 @@ namespace CD_Management_System
             txtPrice.Text = cdAlbum.Price.ToString();
         }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
+            if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId)) {
+                if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
+                {
+                    MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    cdAlbum.AlbumName = txtAlbumName.Text;
+                    cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
+                    cdAlbum.Author = txtAuthor.Text;
+                    cdAlbum.AlbumGenre = txtGenre.Text;
+                    cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
+                    cdAlbum.Description = txtDescription.Text;
+                    cdAlbum.Price = Double.Parse(txtPrice.Text);
+                    _albumService.Update(cdAlbum);
+                    refreshList();
+                }
+            }
 
+        }
     }
 }

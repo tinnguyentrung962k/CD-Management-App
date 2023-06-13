@@ -46,7 +46,7 @@
             Price = new Label();
             btnAdd = new Button();
             btnDelete = new Button();
-            button3 = new Button();
+            btnUpdate = new Button();
             button4 = new Button();
             AlbumID = new Label();
             txtAlbumId = new TextBox();
@@ -72,7 +72,7 @@
             dgvAlbum.RowTemplate.Height = 25;
             dgvAlbum.Size = new Size(728, 167);
             dgvAlbum.TabIndex = 1;
-            dgvAlbum.CellContentDoubleClick += dgvAlbum_CellContentDoubleClick;
+            dgvAlbum.CellContentClick += dgvAlbum_CellContentClick;
             // 
             // txtAlbumName
             // 
@@ -207,14 +207,15 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // button3
+            // btnUpdate
             // 
-            button3.Location = new Point(480, 464);
-            button3.Name = "button3";
-            button3.Size = new Size(128, 47);
-            button3.TabIndex = 19;
-            button3.Text = "Update";
-            button3.UseVisualStyleBackColor = true;
+            btnUpdate.Location = new Point(480, 464);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(128, 47);
+            btnUpdate.TabIndex = 19;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // button4
             // 
@@ -249,7 +250,7 @@
             Controls.Add(txtAlbumId);
             Controls.Add(AlbumID);
             Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(Price);
@@ -295,7 +296,7 @@
         private Label Price;
         private Button btnAdd;
         private Button btnDelete;
-        private Button button3;
+        private Button btnUpdate;
         private Button button4;
         private Label Quantity;
         private TextBox txtQuantity;
