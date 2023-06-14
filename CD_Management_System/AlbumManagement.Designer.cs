@@ -73,6 +73,7 @@
             dgvAlbum.Size = new Size(728, 167);
             dgvAlbum.TabIndex = 1;
             dgvAlbum.CellContentClick += dgvAlbum_CellContentClick;
+            dgvAlbum.CellDoubleClick += dgvAlbum_CellDoubleClick;
             // 
             // txtAlbumName
             // 

@@ -19,7 +19,7 @@ namespace CD_Management_System
     {
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
-
+        public static int sendAlbumID = 0;
         public AlbumManagement()
         {
             InitializeComponent();
@@ -108,7 +108,8 @@ namespace CD_Management_System
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
-            if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId)) {
+            if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
+            {
                 if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
                 {
                     MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
@@ -127,6 +128,17 @@ namespace CD_Management_System
                 }
             }
 
+        }
+
+        private void dgvAlbum_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            sendAlbumID = (int)dgvAlbum[0, e.RowIndex].Value;
+            var album = _albumService.GetAll().Where(p => p.AlbumId == sendAlbumID).FirstOrDefault();
+            if (album != null)
+            {
+                Form song = new SongManagement();
+                song.Show();
+            }
         }
     }
 }

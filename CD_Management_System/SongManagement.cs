@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Repository.Models;
 using Repository.Services;
+using System.Runtime.CompilerServices;
 
 namespace CD_Management_System
 {
@@ -10,46 +11,22 @@ namespace CD_Management_System
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
         SongService _songService = new SongService();
+
+        public int receiceAlbumID = AlbumManagement.sendAlbumID;
+
         public SongManagement()
         {
             InitializeComponent();
-
-            var albumList = _albumService.GetAll().Select(p => new
-                {
-                    p.AlbumId,
-                    p.AlbumName,
-                    p.ReleaseYear,
-                    p.Author,
-                    p.AlbumGenre,
-                    p.Price,
-                    p.Quantity
-                }).ToList();
-
-            dgvAlbumList.DataSource = new BindingSource()
-            {
-                DataSource = albumList
-            };
+            this.ControlBox = false;
+            getSongList();
         }
 
-        private void getSongList(object sender, DataGridViewCellEventArgs e)
+        private void getSongList()
         {
-            var id = dgvAlbumList[0, e.RowIndex].Value;
-            var temp = _albumService.GetAll().Where(p => p.AlbumId.Equals(id)).FirstOrDefault();
-            if (temp != null)
-            {
-                intAlbumID.Text = temp.AlbumId.ToString();
-                txtAlbumName.Text = temp.AlbumName;
-                intReleaseYear.Text = temp.ReleaseYear.ToString();
-                txtAuthor.Text = temp.Author;
-                txtAlbumGerne.Text = temp.AlbumGenre;
-                dblPrice.Text = temp.Price.ToString();
-                intQuantity.Text = temp.Quantity.ToString();
-                txtDescription.Text = temp.Description;
-            }
             var listAlbum = _albumService.GetAll()
                 .Select(p => new { p.AlbumId, p.AlbumName })
                 .ToList();
-            var songList = _songService.GetAll().Where(p => p.AlbumId.Equals(id))
+            var songList = _songService.GetAll().Where(p => p.AlbumId.Equals(receiceAlbumID))
                 .Include(p => p.Album)
                 .Select(p => new
                 {
@@ -73,10 +50,9 @@ namespace CD_Management_System
             switch (op)
             {
                 case "Create":
-                    int id = Int32.Parse(intAlbumID.Text);
-                    if (validateNull() && validateInterger() && validateDouble())
+                    if (validateNull() && validateInterger())
                     {
-                        createSong(_albumService.GetAll().Where(p => p.AlbumId.Equals(id)).FirstOrDefault());
+                        createSong(_albumService.GetAll().Where(p => p.AlbumId.Equals(receiceAlbumID)).FirstOrDefault());
                     }
                     reloadSong();
                     break;
@@ -90,7 +66,6 @@ namespace CD_Management_System
                 case "Delete":
 
                     deleteSong();
-                    reloadAlbum();
                     if (dgvSongList.Rows.Count != 0)
                     {
                         reloadSong();
@@ -109,20 +84,6 @@ namespace CD_Management_System
             }
         }
 
-        private Cdalbum createAlbum()
-        {
-            var cdAlbum = new Cdalbum();
-            cdAlbum.AlbumName = txtAlbumName.Text;
-            cdAlbum.ReleaseYear = Int32.Parse(intReleaseYear.Text);
-            cdAlbum.Author = txtAuthor.Text;
-            cdAlbum.AlbumGenre = txtAlbumGerne.Text;
-            cdAlbum.Price = Double.Parse(dblPrice.Text);
-            cdAlbum.Quantity = Int32.Parse(intQuantity.Text);
-            cdAlbum.Description = txtDescription.Text;
-            _albumService.Create(cdAlbum);
-            return cdAlbum;
-        }
-
         private void createSong(Cdalbum album)
         {
             var song = new Song();
@@ -133,33 +94,12 @@ namespace CD_Management_System
 
         }
 
-        public void reloadAlbum()
-        {
-            var albumList = _albumService.GetAll()
-                .Select(p => new
-                {
-                    p.AlbumId,
-                    p.AlbumName,
-                    p.ReleaseYear,
-                    p.Author,
-                    p.AlbumGenre,
-                    p.Price,
-                    p.Quantity
-                }).ToList();
-
-            dgvAlbumList.DataSource = new BindingSource()
-            {
-                DataSource = albumList
-            };
-
-        }
-
         private void reloadSong()
         {
             var listAlbum = _albumService.GetAll()
                 .Select(p => new { p.AlbumId, p.AlbumName })
                 .ToList();
-            var songList = _songService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(intAlbumID.Text)))
+            var songList = _songService.GetAll().Where(p => p.AlbumId.Equals(receiceAlbumID))
                 .Include(p => p.Album)
                 .Select(p => new
                 {
@@ -178,25 +118,18 @@ namespace CD_Management_System
         public void deleteSong()
         {
             int id;
-            if (!string.IsNullOrEmpty(intAlbumID.Text))
+
+            bool test = Int32.TryParse(intSongID.Text, out id);
+            if (test)
             {
-                bool test = Int32.TryParse(intSongID.Text, out id);
-                if (test)
-                {
-                    var selectedSong = _songService.GetAll()
-                                    .Where(p => p.SongId.Equals(id)).FirstOrDefault();
-                    _songService.Remove(selectedSong);
-                }
-                else
-                {
-                    txtLog.Text = "";
-                    txtLog.Text = "Wrong SongID format dude";
-                }
+                var selectedSong = _songService.GetAll()
+                                .Where(p => p.SongId.Equals(id)).FirstOrDefault();
+                _songService.Remove(selectedSong);
             }
             else
             {
                 txtLog.Text = "";
-                txtLog.Text = "You didn't choose a song dude!";
+                txtLog.Text = "Wrong SongID format dude";
             }
         }
 
@@ -216,17 +149,9 @@ namespace CD_Management_System
 
         private void clearForm()
         {
-            txtAlbumGerne.Text = string.Empty;
             txtDuration.Text = string.Empty;
             txtSongName.Text = string.Empty;
-            txtAlbumName.Text = string.Empty;
-            txtAuthor.Text = string.Empty;
-            txtDescription.Text = string.Empty;
-            intAlbumID.Text = string.Empty;
-            intQuantity.Text = string.Empty;
             intSongID.Text = string.Empty;
-            intReleaseYear.Text = string.Empty;
-            dblPrice.Text = string.Empty;
         }
 
         private void updateSong()
@@ -242,7 +167,7 @@ namespace CD_Management_System
                     {
                         temp.SongName = txtSongName.Text;
                         temp.Duration = txtDuration.Text;
-                        temp.AlbumId = Int32.Parse(intAlbumID.Text);
+                        temp.AlbumId = receiceAlbumID;
                         _songService.Update(temp);
                     }
                 }
@@ -262,7 +187,7 @@ namespace CD_Management_System
 
         private bool validateNull()
         {
-            var elements = new[] { txtAlbumName, txtAlbumGerne, txtAuthor, txtDuration, txtSongName, intAlbumID, intQuantity, intReleaseYear, dblPrice };
+            var elements = new[] { txtSongName, intSongID, txtDuration };
             bool valid = true;
             foreach (var element in elements.Where(d => string.IsNullOrEmpty(d.Text)))
             {
@@ -274,7 +199,7 @@ namespace CD_Management_System
 
         private bool validateInterger()
         {
-            var elements = new[] { intQuantity, intReleaseYear };
+            var elements = new[] { intSongID };
             int temp;
             var valid = true;
             foreach (var element in elements.Where(d => int.TryParse(d.Text, out temp) == false))
@@ -285,17 +210,10 @@ namespace CD_Management_System
             return valid;
         }
 
-        private bool validateDouble()
+        private void closeForm(object sender, EventArgs e)
         {
-            var elements = new[] { dblPrice };
-            double temp;
-            var valid = true;
-            foreach (var element in elements.Where(d => Double.TryParse(d.Text, out temp) == false))
-            {
-                txtLog.Text = txtLog.Text + "" + element.Name + "is not double; \n";
-                valid = false;
-            }
-            return valid;
+            AlbumManagement.sendAlbumID = 0;
+            this.Close();
         }
     }
 }
