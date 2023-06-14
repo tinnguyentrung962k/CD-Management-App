@@ -69,6 +69,7 @@ namespace CD_Management_System
             }
             else
             {
+                
                 cdAlbum.AlbumName = txtAlbumName.Text;
                 cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
                 cdAlbum.Author = txtAuthor.Text;

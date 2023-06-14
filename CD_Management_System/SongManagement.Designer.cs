@@ -152,13 +152,14 @@ namespace CD_Management_System
             // 
             intSongID.Location = new Point(621, 12);
             intSongID.Name = "intSongID";
+            intSongID.ReadOnly = true;
             intSongID.Size = new Size(280, 23);
             intSongID.TabIndex = 28;
             // 
             // txtLog
             // 
             txtLog.AutoSize = true;
-            txtLog.Location = new Point(631, 114);
+            txtLog.Location = new Point(621, 114);
             txtLog.Name = "txtLog";
             txtLog.Size = new Size(69, 15);
             txtLog.TabIndex = 29;

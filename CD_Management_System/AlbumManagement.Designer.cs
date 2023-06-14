@@ -240,6 +240,7 @@
             // 
             txtAlbumId.Location = new Point(169, 256);
             txtAlbumId.Name = "txtAlbumId";
+            txtAlbumId.ReadOnly = true;
             txtAlbumId.Size = new Size(233, 23);
             txtAlbumId.TabIndex = 22;
             // 

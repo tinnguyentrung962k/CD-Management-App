@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Repository.Models;
 using Repository.Services;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace CD_Management_System
 {
@@ -87,10 +89,19 @@ namespace CD_Management_System
         private void createSong(Cdalbum album)
         {
             var song = new Song();
-            song.AlbumId = album.AlbumId;
-            song.SongName = txtSongName.Text;
-            song.Duration = txtDuration.Text;
-            _songService.Create(song);
+
+            if (!checkRegex(txtDuration.Text)) {
+                txtLog.Text = "Invalid Format Time";
+            }
+            else
+            {
+                song.AlbumId = album.AlbumId;
+                song.SongName = txtSongName.Text;
+                song.Duration = txtDuration.Text;
+                _songService.Create(song);
+                txtLog.Text = "Add Successfully!";
+            }
+            
 
         }
 
@@ -192,6 +203,15 @@ namespace CD_Management_System
             foreach (var element in elements.Where(d => string.IsNullOrEmpty(d.Text)))
             {
                 txtLog.Text = txtLog.Text + "" + element.Name + "is empty; \n";
+                valid = false;
+            }
+            return valid;
+        }
+        private bool checkRegex(string s) {
+            bool valid = true; 
+            var regex = @"^[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$";
+            var format = new Regex(regex);
+            if (!format.IsMatch(s)) {
                 valid = false;
             }
             return valid;
