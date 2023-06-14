@@ -50,7 +50,7 @@ namespace CD_Management_System
             switch (op)
             {
                 case "Create":
-                    if (validateNull() && validateInterger())
+                    if (validateNull())
                     {
                         createSong(_albumService.GetAll().Where(p => p.AlbumId.Equals(receiceAlbumID)).FirstOrDefault());
                     }
@@ -187,7 +187,7 @@ namespace CD_Management_System
 
         private bool validateNull()
         {
-            var elements = new[] { txtSongName, intSongID, txtDuration };
+            var elements = new[] { txtSongName, txtDuration };
             bool valid = true;
             foreach (var element in elements.Where(d => string.IsNullOrEmpty(d.Text)))
             {
@@ -197,18 +197,18 @@ namespace CD_Management_System
             return valid;
         }
 
-        private bool validateInterger()
-        {
-            var elements = new[] { intSongID };
-            int temp;
-            var valid = true;
-            foreach (var element in elements.Where(d => int.TryParse(d.Text, out temp) == false))
-            {
-                txtLog.Text = txtLog.Text + "" + element.Name + "is not integer; \n";
-                valid = false;
-            }
-            return valid;
-        }
+        //private bool validateInterger()
+        //{
+        //    var elements = new[] { intSongID };
+        //    int temp;
+        //    var valid = true;
+        //    foreach (var element in elements.Where(d => int.TryParse(d.Text, out temp) == false))
+        //    {
+        //        txtLog.Text = txtLog.Text + "" + element.Name + "is not integer; \n";
+        //        valid = false;
+        //    }
+        //    return valid;
+        //}
 
         private void closeForm(object sender, EventArgs e)
         {
