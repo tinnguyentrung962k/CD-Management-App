@@ -19,7 +19,7 @@ namespace CD_Management_System
     {
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
-
+        public static int sendAlbumID = 0;
         public AlbumManagement()
         {
             InitializeComponent();
@@ -69,15 +69,21 @@ namespace CD_Management_System
             }
             else
             {
-                cdAlbum.AlbumName = txtAlbumName.Text;
-                cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
-                cdAlbum.Author = txtAuthor.Text;
-                cdAlbum.AlbumGenre = txtGenre.Text;
-                cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
-                cdAlbum.Description = txtDescription.Text;
-                cdAlbum.Price = Double.Parse(txtPrice.Text);
-                _albumService.Create(cdAlbum);
-                refreshList();
+                if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text)) {
+                    MessageBox.Show("Invalid format","Warning",MessageBoxButtons.OK);
+                }
+                else
+                {
+                    cdAlbum.AlbumName = txtAlbumName.Text;
+                    cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
+                    cdAlbum.Author = txtAuthor.Text;
+                    cdAlbum.AlbumGenre = txtGenre.Text;
+                    cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
+                    cdAlbum.Description = txtDescription.Text;
+                    cdAlbum.Price = Double.Parse(txtPrice.Text);
+                    _albumService.Create(cdAlbum);
+                    refreshList();
+                }
             }
 
         }
@@ -108,25 +114,56 @@ namespace CD_Management_System
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
-            if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId)) {
+            if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
+            {
                 if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
                 {
                     MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    cdAlbum.AlbumName = txtAlbumName.Text;
-                    cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
-                    cdAlbum.Author = txtAuthor.Text;
-                    cdAlbum.AlbumGenre = txtGenre.Text;
-                    cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
-                    cdAlbum.Description = txtDescription.Text;
-                    cdAlbum.Price = Double.Parse(txtPrice.Text);
-                    _albumService.Update(cdAlbum);
-                    refreshList();
+                    if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
+                    {
+                        MessageBox.Show("Invalid format", "Warning", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        cdAlbum.AlbumName = txtAlbumName.Text;
+                        cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
+                        cdAlbum.Author = txtAuthor.Text;
+                        cdAlbum.AlbumGenre = txtGenre.Text;
+                        cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
+                        cdAlbum.Description = txtDescription.Text;
+                        cdAlbum.Price = Double.Parse(txtPrice.Text);
+                        _albumService.Update(cdAlbum);
+                        refreshList();
+                    }
                 }
             }
 
+        }
+        private bool checkNumRegex(string input) { 
+            var regex = new Regex("^\\d+$");
+            bool valid = true;
+            if (!regex.IsMatch(input))
+            {
+                valid = false;
+            }
+            else {
+                valid = true;
+            }
+            return valid;
+        }
+
+        private void dgvAlbum_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            sendAlbumID = (int)dgvAlbum[0, e.RowIndex].Value;
+            var album = _albumService.GetAll().Where(p => p.AlbumId == sendAlbumID).FirstOrDefault();
+            if (album != null)
+            {
+                Form song = new SongManagement();
+                song.Show();
+            }
         }
     }
 }

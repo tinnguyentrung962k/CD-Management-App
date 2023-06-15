@@ -58,3 +58,126 @@ C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-w
 C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.pdb
 C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.genruntimeconfig.cache
 C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\ref\CD_Management_System.dll
+C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.SongManagement.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.exe
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\appsettings.json
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.deps.json
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.runtimeconfig.json
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.pdb
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Azure.Core.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Azure.Identity.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Identity.Client.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\System.Runtime.Caching.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Repository.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\bin\Debug\net6.0-windows\Repository.pdb
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.AssemblyReference.cache
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AlbumManagement.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.SongManagement.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.GenerateResource.cache
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AssemblyInfoInputs.cache
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AssemblyInfo.cs
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.CoreCompileInputs.cache
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.CopyComplete
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\refint\CD_Management_System.dll
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.pdb
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.genruntimeconfig.cache
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\ref\CD_Management_System.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.exe
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\appsettings.json
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.deps.json
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.runtimeconfig.json
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\CD_Management_System.pdb
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Azure.Core.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Azure.Identity.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Identity.Client.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\System.Runtime.Caching.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Repository.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\bin\Debug\net6.0-windows\Repository.pdb
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.AssemblyReference.cache
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AlbumManagement.resources
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.SongManagement.resources
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.GenerateResource.cache
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AssemblyInfoInputs.cache
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AssemblyInfo.cs
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.csproj.CopyComplete
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\refint\CD_Management_System.dll
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.pdb
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.genruntimeconfig.cache
+C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\ref\CD_Management_System.dll

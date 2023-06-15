@@ -73,6 +73,7 @@
             dgvAlbum.Size = new Size(728, 167);
             dgvAlbum.TabIndex = 1;
             dgvAlbum.CellContentClick += dgvAlbum_CellContentClick;
+            dgvAlbum.CellDoubleClick += dgvAlbum_CellDoubleClick;
             // 
             // txtAlbumName
             // 
@@ -239,6 +240,7 @@
             // 
             txtAlbumId.Location = new Point(169, 256);
             txtAlbumId.Name = "txtAlbumId";
+            txtAlbumId.ReadOnly = true;
             txtAlbumId.Size = new Size(233, 23);
             txtAlbumId.TabIndex = 22;
             // 
