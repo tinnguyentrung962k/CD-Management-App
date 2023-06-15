@@ -122,15 +122,22 @@ namespace CD_Management_System
                 }
                 else
                 {
-                    cdAlbum.AlbumName = txtAlbumName.Text;
-                    cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
-                    cdAlbum.Author = txtAuthor.Text;
-                    cdAlbum.AlbumGenre = txtGenre.Text;
-                    cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
-                    cdAlbum.Description = txtDescription.Text;
-                    cdAlbum.Price = Double.Parse(txtPrice.Text);
-                    _albumService.Update(cdAlbum);
-                    refreshList();
+                    if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
+                    {
+                        MessageBox.Show("Invalid format", "Warning", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        cdAlbum.AlbumName = txtAlbumName.Text;
+                        cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
+                        cdAlbum.Author = txtAuthor.Text;
+                        cdAlbum.AlbumGenre = txtGenre.Text;
+                        cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
+                        cdAlbum.Description = txtDescription.Text;
+                        cdAlbum.Price = Double.Parse(txtPrice.Text);
+                        _albumService.Update(cdAlbum);
+                        refreshList();
+                    }
                 }
             }
 
