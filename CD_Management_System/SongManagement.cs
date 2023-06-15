@@ -176,10 +176,16 @@ namespace CD_Management_System
                     var temp = _songService.GetAll().Where(p => p.SongId.Equals(id)).FirstOrDefault();
                     if (temp != null && validateNull())
                     {
-                        temp.SongName = txtSongName.Text;
-                        temp.Duration = txtDuration.Text;
-                        temp.AlbumId = receiceAlbumID;
-                        _songService.Update(temp);
+                        if (!checkRegex(txtDuration.Text))
+                        {
+                            txtLog.Text = "Invalid Format Time";
+                        }
+                        else {
+                            temp.SongName = txtSongName.Text;
+                            temp.Duration = txtDuration.Text;
+                            temp.AlbumId = receiceAlbumID;
+                            _songService.Update(temp);
+                        }
                     }
                 }
                 else
