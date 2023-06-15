@@ -29,7 +29,7 @@ namespace Repository.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer("Server=NGUYENTRUNGTIN;uid=sa;pwd=12345;database=CDStore;TrustServerCertificate=True");
             }
         }
         private string GetConnectionString()
