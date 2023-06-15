@@ -217,19 +217,6 @@ namespace CD_Management_System
             return valid;
         }
 
-        //private bool validateInterger()
-        //{
-        //    var elements = new[] { intSongID };
-        //    int temp;
-        //    var valid = true;
-        //    foreach (var element in elements.Where(d => int.TryParse(d.Text, out temp) == false))
-        //    {
-        //        txtLog.Text = txtLog.Text + "" + element.Name + "is not integer; \n";
-        //        valid = false;
-        //    }
-        //    return valid;
-        //}
-
         private void closeForm(object sender, EventArgs e)
         {
             AlbumManagement.sendAlbumID = 0;

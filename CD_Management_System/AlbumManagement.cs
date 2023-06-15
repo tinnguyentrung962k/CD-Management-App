@@ -69,16 +69,21 @@ namespace CD_Management_System
             }
             else
             {
-                
-                cdAlbum.AlbumName = txtAlbumName.Text;
-                cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
-                cdAlbum.Author = txtAuthor.Text;
-                cdAlbum.AlbumGenre = txtGenre.Text;
-                cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
-                cdAlbum.Description = txtDescription.Text;
-                cdAlbum.Price = Double.Parse(txtPrice.Text);
-                _albumService.Create(cdAlbum);
-                refreshList();
+                if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text)) {
+                    MessageBox.Show("Invalid format","Warning",MessageBoxButtons.OK);
+                }
+                else
+                {
+                    cdAlbum.AlbumName = txtAlbumName.Text;
+                    cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
+                    cdAlbum.Author = txtAuthor.Text;
+                    cdAlbum.AlbumGenre = txtGenre.Text;
+                    cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
+                    cdAlbum.Description = txtDescription.Text;
+                    cdAlbum.Price = Double.Parse(txtPrice.Text);
+                    _albumService.Create(cdAlbum);
+                    refreshList();
+                }
             }
 
         }
@@ -129,6 +134,18 @@ namespace CD_Management_System
                 }
             }
 
+        }
+        private bool checkNumRegex(string input) { 
+            var regex = new Regex("^\\d+$");
+            bool valid = true;
+            if (!regex.IsMatch(input))
+            {
+                valid = false;
+            }
+            else {
+                valid = true;
+            }
+            return valid;
         }
 
         private void dgvAlbum_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
