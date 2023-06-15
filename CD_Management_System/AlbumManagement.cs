@@ -69,8 +69,9 @@ namespace CD_Management_System
             }
             else
             {
-                if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text)) {
-                    MessageBox.Show("Invalid format","Warning",MessageBoxButtons.OK);
+                if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
+                {
+                    MessageBox.Show("Invalid format", "Warning", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -142,14 +143,16 @@ namespace CD_Management_System
             }
 
         }
-        private bool checkNumRegex(string input) { 
+        private bool checkNumRegex(string input)
+        {
             var regex = new Regex("^\\d+$");
             bool valid = true;
             if (!regex.IsMatch(input))
             {
                 valid = false;
             }
-            else {
+            else
+            {
                 valid = true;
             }
             return valid;
