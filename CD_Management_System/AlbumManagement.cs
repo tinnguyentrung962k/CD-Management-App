@@ -19,6 +19,7 @@ namespace CD_Management_System
     {
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
+        SongService _songService = new SongService();
         public static int sendAlbumID = 0;
         public AlbumManagement()
         {
@@ -91,11 +92,19 @@ namespace CD_Management_System
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
-            if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
-                _albumService.Remove(cdAlbum);
-            refreshList();
-
+            DialogResult dr = MessageBox.Show("Are you sure to delete this album?", "System message", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                var songQueue = _songService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).ToList();
+                for (int i = 0; i < songQueue.Count; i++)
+                {
+                    _songService.Remove(songQueue[i]);
+                }
+                var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
+                if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
+                    _albumService.Remove(cdAlbum);
+                refreshList();
+            }
         }
 
         private void dgvAlbum_CellContentClick(object sender, DataGridViewCellEventArgs e)
