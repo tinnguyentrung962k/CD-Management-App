@@ -20,7 +20,6 @@ namespace Repository.Models
         public double Price { get; set; }
         public int Quantity { get; set; }
         public string Description { get; set; }
-        public string ImgSrc { get; set; }
 
         public virtual ICollection<Song> Songs { get; set; }
     }

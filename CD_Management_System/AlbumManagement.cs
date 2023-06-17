@@ -33,8 +33,7 @@ namespace CD_Management_System
                 p.AlbumGenre,
                 p.Price,
                 p.Quantity,
-                p.Description,
-                p.ImgSrc
+                p.Description
             }).ToList(); ;
             dgvAlbum.DataSource = new BindingSource { DataSource = listAlbum };
         }
@@ -56,8 +55,7 @@ namespace CD_Management_System
                     p.AlbumGenre,
                     p.Price,
                     p.Quantity,
-                    p.Description,
-                    p.ImgSrc
+                    p.Description
                 }).ToList();
             }
         }

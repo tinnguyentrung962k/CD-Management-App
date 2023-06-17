@@ -1,5 +1,5 @@
-﻿using Services.Models;
-using Services.Repository;
+﻿using Repository.Models;
+using Repository.Services;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Globalization;
@@ -10,7 +10,7 @@ namespace CD_Management_System
     {
         private Account user;
         static Request f;
-        private CustomerRequestRepository crr;
+        private CustomerRequestService crr;
         private CustomerRequest? req;
         private bool editMode;
         private bool isAsc = true;
@@ -19,7 +19,7 @@ namespace CD_Management_System
         public Request()
         {
             InitializeComponent();
-            crr = new CustomerRequestRepository();
+            crr = new CustomerRequestService();
             initializeReq();
             updateDvg();
 
@@ -147,7 +147,7 @@ namespace CD_Management_System
                 MessageBox.Show("You can't remove other's request!", "No permission");
                 return;
             }
-            if (crr.Delete(req))
+            if (crr.Remove(req))
             {
                 MessageBox.Show("Request removed successfully!", "Removal done");
                 addToLog("remove");
@@ -391,7 +391,7 @@ namespace CD_Management_System
 
         private void addToLog(string action)
         {
-            ActivityLogRepository alr = new ActivityLogRepository();
+            ActivityLogService alr = new ActivityLogService();
             string s = "Customer Request table: (" + user.RoleId + "-" + user.AccountId + " " + user.FullName + ") " + action + "s ";
             switch (action)
             {
