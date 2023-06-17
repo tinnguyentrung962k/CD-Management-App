@@ -183,3 +183,5 @@ C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\o
 C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\ref\CD_Management_System.dll
 C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.EmployeeManagement.resources
 C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.Request.resources
+C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.EmployeeManagement.resources
+C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.Request.resources

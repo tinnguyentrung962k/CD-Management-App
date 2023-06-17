@@ -175,5 +175,18 @@ namespace CD_Management_System
                 song.Show();
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtAlbumId.Text = "";
+            txtAlbumName.Text = "";
+            txtReleaseYear.Text = "";
+            txtAuthor.Text = "";
+            txtGenre.Text = "";
+            txtQuantity.Text = "";
+            txtDescription.Text = "";
+            txtPrice.Text = "";
+
+        }
     }
 }

@@ -47,7 +47,7 @@
             btnAdd = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
-            button4 = new Button();
+            btnCancel = new Button();
             AlbumID = new Label();
             txtAlbumId = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvAlbum).BeginInit();
@@ -218,14 +218,16 @@
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
             // 
-            // button4
+            // btnCancel
             // 
-            button4.Location = new Point(641, 464);
-            button4.Name = "button4";
-            button4.Size = new Size(128, 47);
-            button4.TabIndex = 20;
-            button4.Text = "Search";
-            button4.UseVisualStyleBackColor = true;
+            btnCancel.Location = new Point(641, 464);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(128, 47);
+            btnCancel.TabIndex = 20;
+            btnCancel.TabStop = false;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // AlbumID
             // 
@@ -251,7 +253,7 @@
             ClientSize = new Size(797, 565);
             Controls.Add(txtAlbumId);
             Controls.Add(AlbumID);
-            Controls.Add(button4);
+            Controls.Add(btnCancel);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
@@ -299,7 +301,7 @@
         private Button btnAdd;
         private Button btnDelete;
         private Button btnUpdate;
-        private Button button4;
+        private Button btnCancel;
         private Label Quantity;
         private TextBox txtQuantity;
         private Label AlbumID;
