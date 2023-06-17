@@ -73,10 +73,10 @@ CREATE TABLE [dbo].[ActivityLog](
 GO
 
 
-INSERT [dbo].[Role] ([roleId],[roleName]) VALUES ('AD','Administrator')
+INSERT [dbo].[Role] ([roleId],[roleName]) VALUES ('MG','Manager')
 INSERT [dbo].[Role] ([roleId],[roleName]) VALUES ('EM','Employee')
 
-INSERT [dbo].[Account] ([userName],[passWord],[roleId],[fullName],[email],[address],[phoneNumber]) VALUES ('admin','abc12345','AD',N'Administrator','cdstore@gmail.com',N'FPT University','0886647866')
+INSERT [dbo].[Account] ([userName],[passWord],[roleId],[fullName],[email],[address],[phoneNumber]) VALUES ('admin','abc12345','MG',N'Manager','cdstore@gmail.com',N'FPT University','0886647866')
 
 INSERT [dbo].[CDAlbum] ([albumName],[releaseYear],[author],[albumGenre],[price],[quantity],[description]) VALUES (N'99%',2023,'MCK',N'Rap',420000,100,N'Sau thời gian chuẩn bị, MCK tung album phòng thu đầu tay “99%” vào thời khắc quan trọng nhất trong đời người đàn ông: Khi anh bước qua tuổi 24. Sản phẩm cho thấy tư duy âm nhạc mới mẻ của rapper sinh năm 1999, đồng thời chứng minh anh là một dấu ấn không thể thiếu trong thị trường rap Việt hiện nay.')
 INSERT [dbo].[CDAlbum] ([albumName],[releaseYear],[author],[albumGenre],[price],[quantity],[description]) VALUES (N'Loser2Lover',2020,N'Bray',N'Rap',500000,100,N'Từ 1 kẻ thua cuộc trở thành 1 người biết yêu')
