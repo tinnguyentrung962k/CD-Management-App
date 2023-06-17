@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Repository.Models;
 using Repository.Services;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CD_Management_System
 {
@@ -29,12 +30,19 @@ namespace CD_Management_System
             }
             else if (IsValidUser())
             {
-                var admin = _userServices.GetAll().Where(p => p.RoleId == "MG");
-                if (admin != null) {
+                var user = _userServices.GetAll().Where(p => p.UserName == txtUsername.Text && p.PassWord == txtPassword.Text).FirstOrDefault();
+                if (user.RoleId == "MG")
+                {
                     this.Hide();
-                    Form adminMenu = new AdminMenu();
-                    adminMenu.Show();
-                }  
+                    Form mngMenu = new AdminMenu();
+                    mngMenu.ShowDialog();
+                }
+                else {
+                    this.Hide();
+                    Form empMenu = new EmployeeMenu();
+                    empMenu.ShowDialog();
+                }
+
             }
             else
             {
@@ -49,7 +57,9 @@ namespace CD_Management_System
             var user = _userServices.GetAll().Where(p => p.UserName == username && p.PassWord == password).FirstOrDefault();
             if (user != null)
             {
+
                 return true;
+                
             }
             return false;
         }
