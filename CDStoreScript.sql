@@ -57,18 +57,15 @@ CREATE TABLE [dbo].[CustomerRequest](
 	[phoneNumber] [varchar](200) NOT NULL,
 	[email][varchar](200) NOT NULL,
 	[description][nvarchar](4000) NOT NULL,
-	[status] [bit] NOT NULL,
+	[status] [varchar](50) NOT NULL,
 	[submitDate][date] NOT NULL,
 )
 GO
 
 CREATE TABLE [dbo].[ActivityLog](
 	[activityId] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	[accountId] [int] references Account(accountId) NOT NULL,
 	[activityDate] [date] NOT NULL,
 	[activity] [nvarchar](200),
-	[albumId][int] references CDAlbum(albumId) NOT NULL,
-	[requestId][int] references CustomerRequest(requestId) NOT NULL,
 )
 GO
 
