@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Repository.Models;
 using Repository.Services;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -90,7 +91,8 @@ namespace CD_Management_System
         {
             var song = new Song();
 
-            if (!checkRegex(txtDuration.Text)) {
+            if (!checkRegex(txtDuration.Text))
+            {
                 txtLog.Text = "Invalid Format Time";
             }
             else
@@ -101,7 +103,7 @@ namespace CD_Management_System
                 _songService.Create(song);
                 txtLog.Text = "Add Successfully!";
             }
-            
+
 
         }
 
@@ -180,7 +182,8 @@ namespace CD_Management_System
                         {
                             txtLog.Text = "Invalid Format Time";
                         }
-                        else {
+                        else
+                        {
                             temp.SongName = txtSongName.Text;
                             temp.Duration = txtDuration.Text;
                             temp.AlbumId = receiceAlbumID;
@@ -213,11 +216,13 @@ namespace CD_Management_System
             }
             return valid;
         }
-        private bool checkRegex(string s) {
-            bool valid = true; 
+        private bool checkRegex(string s)
+        {
+            bool valid = true;
             var regex = @"^[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$";
             var format = new Regex(regex);
-            if (!format.IsMatch(s)) {
+            if (!format.IsMatch(s))
+            {
                 valid = false;
             }
             return valid;
@@ -227,6 +232,20 @@ namespace CD_Management_System
         {
             AlbumManagement.sendAlbumID = 0;
             this.Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgvSongList.DataSource = new BindingSource()
+            {
+                DataSource = _songService.GetAll().Where(p => p.SongName.Contains(txtSearch.Text) && p.AlbumId.Equals(receiceAlbumID)).Select(p => new
+                {
+                    p.SongId,
+                    p.SongName,
+                    p.Duration,
+                    p.Album.AlbumName
+                }).ToList()
+            };
         }
     }
 }

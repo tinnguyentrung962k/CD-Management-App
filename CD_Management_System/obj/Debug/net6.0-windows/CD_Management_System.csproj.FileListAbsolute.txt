@@ -191,3 +191,8 @@ C:\Users\trung\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-w
 C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AdminMenu.resources
 C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.EmployeeMenu.resources
 C:\Users\Administrator\OneDrive\Desktop\CD-Management-App\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.Login.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.AdminMenu.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.EmployeeManagement.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.EmployeeMenu.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.Login.resources
+C:\Users\VU HONG ANH\Documents\GitHub\CD-Management-App2\CD_Management_System\obj\Debug\net6.0-windows\CD_Management_System.Request.resources
