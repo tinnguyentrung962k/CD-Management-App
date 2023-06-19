@@ -123,7 +123,7 @@ namespace CD_Management_System
             try
             {
                 crr.Create(cr);
-                req = crr.GetAll().Last();
+                req = crr.GetAll().ToList().Last();
                 debug();
                 addToLog("create");
                 updateDvg();
