@@ -20,7 +20,10 @@ namespace CD_Management_System
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
         SongService _songService = new SongService();
+        AccountService _accountService = new AccountService();
         public static int sendAlbumID = 0;
+        public static string receivedUserName = Login.sendUserName;
+        public static string receivedPassword = Login.sendPassword;
         public AlbumManagement()
         {
             InitializeComponent();
@@ -176,6 +179,7 @@ namespace CD_Management_System
             }
         }
 
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             txtAlbumId.Text = "";
@@ -186,7 +190,39 @@ namespace CD_Management_System
             txtQuantity.Text = "";
             txtDescription.Text = "";
             txtPrice.Text = "";
+            refreshList();
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchkey = txtSearchBox.Text;
+            var result = _albumService.GetAll().Where(p => p.AlbumName.ToLower().Contains(searchkey.ToLower()) || p.AlbumGenre.ToLower().Contains(searchkey.ToLower()) || p.Author.ToLower().Contains(searchkey.ToLower())).ToList();
+            if (result == null)
+            {
+                MessageBox.Show("No Result Found!", "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                refreshList(result);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var user = _accountService.GetAll().Where(p => p.UserName == receivedUserName && p.PassWord == receivedPassword).FirstOrDefault();
+            if (user.RoleId == "MG")
+            {
+                this.Hide();
+                Form mngMenu = new AdminMenu();
+                mngMenu.ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                Form empMenu = new EmployeeMenu();
+                empMenu.ShowDialog();
+            }
         }
     }
 }

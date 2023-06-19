@@ -50,6 +50,7 @@
             btnSearch = new Button();
             label8 = new Label();
             txtPassword = new TextBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             dgvEmployee.Name = "dgvEmployee";
             dgvEmployee.RowHeadersWidth = 51;
             dgvEmployee.RowTemplate.Height = 29;
-            dgvEmployee.Size = new Size(971, 135);
+            dgvEmployee.Size = new Size(856, 135);
             dgvEmployee.TabIndex = 0;
             dgvEmployee.CellClick += chooseEmployee;
             // 
@@ -69,7 +70,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(360, 7);
+            label1.Location = new Point(312, 9);
             label1.Name = "label1";
             label1.Size = new Size(299, 37);
             label1.TabIndex = 1;
@@ -181,7 +182,7 @@
             // Search
             // 
             Search.AutoSize = true;
-            Search.Location = new Point(656, 208);
+            Search.Location = new Point(434, 241);
             Search.Name = "Search";
             Search.Size = new Size(97, 15);
             Search.TabIndex = 22;
@@ -189,7 +190,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(797, 206);
+            txtSearch.Location = new Point(537, 238);
             txtSearch.Margin = new Padding(3, 2, 3, 2);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(212, 23);
@@ -197,7 +198,7 @@
             // 
             // btnCreate
             // 
-            btnCreate.Location = new Point(547, 371);
+            btnCreate.Location = new Point(487, 402);
             btnCreate.Margin = new Padding(3, 2, 3, 2);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(141, 36);
@@ -208,7 +209,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(711, 371);
+            btnUpdate.Location = new Point(487, 325);
             btnUpdate.Margin = new Padding(3, 2, 3, 2);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(143, 36);
@@ -219,7 +220,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(877, 371);
+            btnDelete.Location = new Point(697, 325);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(132, 36);
@@ -230,10 +231,10 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(886, 238);
+            btnSearch.Location = new Point(772, 234);
             btnSearch.Margin = new Padding(3, 2, 3, 2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(122, 36);
+            btnSearch.Size = new Size(122, 28);
             btnSearch.TabIndex = 27;
             btnSearch.Text = "Search Employee";
             btnSearch.UseVisualStyleBackColor = true;
@@ -254,11 +255,21 @@
             txtPassword.Size = new Size(252, 23);
             txtPassword.TabIndex = 29;
             // 
+            // button1
+            // 
+            button1.Location = new Point(697, 402);
+            button1.Name = "button1";
+            button1.Size = new Size(132, 36);
+            button1.TabIndex = 30;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1046, 490);
+            ClientSize = new Size(906, 490);
+            Controls.Add(button1);
             Controls.Add(txtPassword);
             Controls.Add(label8);
             Controls.Add(btnSearch);
@@ -313,5 +324,6 @@
         private Button btnSearch;
         private Label label8;
         private TextBox txtPassword;
+        private Button button1;
     }
 }

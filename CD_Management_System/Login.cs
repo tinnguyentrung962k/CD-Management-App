@@ -17,6 +17,8 @@ namespace CD_Management_System
     {
         AccountService _userServices = new AccountService();
         CDStoreContext _storeContext = new CDStoreContext();
+        public static String sendUserName = "";
+        public static String sendPassword = "";
         public Login()
         {
             InitializeComponent();
@@ -31,6 +33,8 @@ namespace CD_Management_System
             else if (IsValidUser())
             {
                 var user = _userServices.GetAll().Where(p => p.UserName == txtUsername.Text && p.PassWord == txtPassword.Text).FirstOrDefault();
+                sendUserName = txtUsername.Text;
+                sendPassword = txtPassword.Text;
                 if (user.RoleId == "MG")
                 {
                     this.Hide();
