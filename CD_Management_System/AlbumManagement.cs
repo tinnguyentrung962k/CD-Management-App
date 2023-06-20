@@ -223,23 +223,28 @@ namespace CD_Management_System
 
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchkey = txtSearchBox.Text;
-            var result = _albumService.GetAll().Where(p => p.AlbumName.ToLower().Contains(searchkey.ToLower()) || p.AlbumGenre.ToLower().Contains(searchkey.ToLower()) || p.Author.ToLower().Contains(searchkey.ToLower())).ToList();
-            if (result == null)
-            {
-                MessageBox.Show("No Result Found!", "Warning", MessageBoxButtons.OK);
-            }
-            else
-            {
-                refreshList(result);
-            }
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchkey = txtSearchBox.Text;
+            dgvAlbum.DataSource = new BindingSource()
+            {
+                DataSource = _albumService.GetAll().Where(p => p.AlbumName.ToLower().Contains(searchkey.ToLower()) || p.AlbumGenre.ToLower().Contains(searchkey.ToLower()) || p.Author.ToLower().Contains(searchkey.ToLower())).Select(p => new
+                {
+                    p.AlbumId,
+                    p.AlbumName,
+                    p.Author,
+                    p.ReleaseYear,
+                    p.AlbumGenre,
+                    p.Price,
+                    p.Quantity,
+                    p.Description
+                }).ToList()
+            };
         }
     }
 }

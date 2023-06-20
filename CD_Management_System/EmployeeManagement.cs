@@ -194,5 +194,24 @@ namespace CD_Management_System
         {
             this.Close();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchkey = txtSearch.Text;
+            dgvEmployee.DataSource = new BindingSource()
+            {
+                DataSource = _accountService.GetAll().Where(p => p.UserName.ToLower().Contains(searchkey.ToLower()) || p.FullName.ToLower().Contains(searchkey.ToLower()) || p.PhoneNumber.Contains(searchkey.ToLower())).Select(p => new
+                {
+                    p.AccountId,
+                    p.UserName,
+                    p.FullName,
+                    p.Role.RoleName,
+                    p.Email,
+                    p.Address,
+                    p.PhoneNumber
+                }).ToList()
+            };
+
+        }
     }
 }

@@ -69,12 +69,14 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(312, 9);
+            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.RoyalBlue;
+            label1.Location = new Point(375, 10);
             label1.Name = "label1";
-            label1.Size = new Size(299, 37);
+            label1.Size = new Size(195, 37);
             label1.TabIndex = 1;
-            label1.Text = "Employee Management";
+            label1.Text = "Personnel List";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -182,11 +184,12 @@
             // Search
             // 
             Search.AutoSize = true;
-            Search.Location = new Point(434, 241);
+            Search.Location = new Point(524, 203);
             Search.Name = "Search";
-            Search.Size = new Size(97, 15);
+            Search.Size = new Size(234, 30);
             Search.TabIndex = 22;
-            Search.Text = "Search Employee";
+            Search.Text = "Search Employee \r\n(FullName or UserName or Phone number)";
+            Search.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtSearch
             // 
@@ -238,6 +241,7 @@
             btnSearch.TabIndex = 27;
             btnSearch.Text = "Search Employee";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // label8
             // 
@@ -295,7 +299,7 @@
             Controls.Add(dgvEmployee);
             Margin = new Padding(3, 2, 3, 2);
             Name = "EmployeeManagement";
-            Text = "Form1";
+            Text = "Employee Management";
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
             ResumeLayout(false);
             PerformLayout();

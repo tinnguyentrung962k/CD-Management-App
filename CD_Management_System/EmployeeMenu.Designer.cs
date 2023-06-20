@@ -30,16 +30,14 @@
         {
             btnAlbumManagement = new Button();
             btnRequestManagement = new Button();
-            btnLogout = new Button();
             totalAlbum = new Label();
             totalSong = new Label();
             totalRequest = new Label();
-            panel1 = new Panel();
-            label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
             panel4 = new Panel();
-            panel1.SuspendLayout();
+            btnLogout = new Button();
+            txtTitleEmp = new Label();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -47,9 +45,10 @@
             // 
             // btnAlbumManagement
             // 
-            btnAlbumManagement.Location = new Point(451, 103);
+            btnAlbumManagement.Location = new Point(418, 77);
+            btnAlbumManagement.Margin = new Padding(3, 2, 3, 2);
             btnAlbumManagement.Name = "btnAlbumManagement";
-            btnAlbumManagement.Size = new Size(245, 50);
+            btnAlbumManagement.Size = new Size(149, 68);
             btnAlbumManagement.TabIndex = 0;
             btnAlbumManagement.Text = "Album Management";
             btnAlbumManagement.UseVisualStyleBackColor = true;
@@ -57,32 +56,23 @@
             // 
             // btnRequestManagement
             // 
-            btnRequestManagement.Location = new Point(451, 220);
+            btnRequestManagement.Location = new Point(418, 176);
+            btnRequestManagement.Margin = new Padding(3, 2, 3, 2);
             btnRequestManagement.Name = "btnRequestManagement";
-            btnRequestManagement.Size = new Size(245, 50);
+            btnRequestManagement.Size = new Size(149, 67);
             btnRequestManagement.TabIndex = 1;
             btnRequestManagement.Text = "Request Management";
             btnRequestManagement.UseVisualStyleBackColor = true;
             btnRequestManagement.Click += btnRequestManagement_Click;
-            // 
-            // btnLogout
-            // 
-            btnLogout.Location = new Point(689, 13);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(111, 35);
-            btnLogout.TabIndex = 2;
-            btnLogout.Text = "Log out";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
             // 
             // totalAlbum
             // 
             totalAlbum.AutoSize = true;
             totalAlbum.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             totalAlbum.ForeColor = Color.White;
-            totalAlbum.Location = new Point(0, 23);
+            totalAlbum.Location = new Point(0, 17);
             totalAlbum.Name = "totalAlbum";
-            totalAlbum.Size = new Size(81, 35);
+            totalAlbum.Size = new Size(65, 28);
             totalAlbum.TabIndex = 3;
             totalAlbum.Text = "label1";
             // 
@@ -91,9 +81,9 @@
             totalSong.AutoSize = true;
             totalSong.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             totalSong.ForeColor = Color.White;
-            totalSong.Location = new Point(0, 23);
+            totalSong.Location = new Point(0, 17);
             totalSong.Name = "totalSong";
-            totalSong.Size = new Size(81, 35);
+            totalSong.Size = new Size(65, 28);
             totalSong.TabIndex = 4;
             totalSong.Text = "label1";
             // 
@@ -102,74 +92,78 @@
             totalRequest.AutoSize = true;
             totalRequest.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             totalRequest.ForeColor = Color.White;
-            totalRequest.Location = new Point(0, 23);
+            totalRequest.Location = new Point(0, 17);
             totalRequest.Name = "totalRequest";
-            totalRequest.Size = new Size(81, 35);
+            totalRequest.Size = new Size(65, 28);
             totalRequest.TabIndex = 5;
             totalRequest.Text = "label1";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(btnLogout);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 47);
-            panel1.TabIndex = 6;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(0, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(288, 41);
-            label1.TabIndex = 7;
-            label1.Text = "Welcome, Employee";
             // 
             // panel2
             // 
             panel2.BackColor = Color.Blue;
             panel2.Controls.Add(totalAlbum);
-            panel2.Location = new Point(52, 103);
+            panel2.Location = new Point(46, 77);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(220, 58);
+            panel2.Size = new Size(192, 53);
             panel2.TabIndex = 7;
             // 
             // panel3
             // 
             panel3.BackColor = Color.Orange;
             panel3.Controls.Add(totalSong);
-            panel3.Location = new Point(52, 200);
+            panel3.Location = new Point(46, 150);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(220, 58);
+            panel3.Size = new Size(192, 52);
             panel3.TabIndex = 8;
             // 
             // panel4
             // 
             panel4.BackColor = Color.Green;
             panel4.Controls.Add(totalRequest);
-            panel4.Location = new Point(52, 299);
+            panel4.Location = new Point(46, 224);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(220, 58);
+            panel4.Size = new Size(192, 51);
             panel4.TabIndex = 8;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(591, 11);
+            btnLogout.Margin = new Padding(3, 2, 3, 2);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(97, 26);
+            btnLogout.TabIndex = 2;
+            btnLogout.Text = "Log out";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // txtTitleEmp
+            // 
+            txtTitleEmp.AutoSize = true;
+            txtTitleEmp.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTitleEmp.Location = new Point(46, 9);
+            txtTitleEmp.Name = "txtTitleEmp";
+            txtTitleEmp.Size = new Size(111, 32);
+            txtTitleEmp.TabIndex = 7;
+            txtTitleEmp.Text = "labelTitle";
             // 
             // EmployeeMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
+            Controls.Add(txtTitleEmp);
             Controls.Add(panel4);
+            Controls.Add(btnLogout);
             Controls.Add(panel3);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(btnRequestManagement);
             Controls.Add(btnAlbumManagement);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EmployeeMenu";
             Text = "EmployeeMenu";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
@@ -177,20 +171,21 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnAlbumManagement;
         private Button btnRequestManagement;
-        private Button btnLogout;
         private Label totalAlbum;
         private Label totalSong;
         private Label totalRequest;
-        private Panel panel1;
         private Label label1;
         private Panel panel2;
         private Panel panel3;
         private Panel panel4;
+        private Button btnLogout;
+        private Label txtTitleEmp;
     }
 }

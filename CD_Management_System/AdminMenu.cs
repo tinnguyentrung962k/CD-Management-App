@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Repository.Models;
 using Repository.Services;
 
 namespace CD_Management_System
@@ -16,10 +17,13 @@ namespace CD_Management_System
         CdAlbumService _cdAlbumService = new CdAlbumService();
         SongService _songService = new SongService();
         CustomerRequestService _customerRequestService = new CustomerRequestService();
+        AccountService _accountService = new AccountService();
+        public static Account LoggedIn;
         public AdminMenu()
         {
+            LoggedIn = _accountService.GetAll().Where(x => x.UserName == Login.sendUserName).FirstOrDefault();
             InitializeComponent();
-
+            txtTitleMng.Text = "Welcome, " + LoggedIn.FullName;
             totalAlbum.Text = "Total album: " + _cdAlbumService.GetAll().Count().ToString();
             totalSong.Text = "Total song: " + _songService.GetAll().Count().ToString();
             totalRequest.Text = "Total request: " + _customerRequestService.GetAll().Count().ToString();

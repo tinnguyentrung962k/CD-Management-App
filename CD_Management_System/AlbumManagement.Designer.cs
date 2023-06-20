@@ -50,7 +50,6 @@
             btnCancel = new Button();
             AlbumID = new Label();
             txtAlbumId = new TextBox();
-            btnSearch = new Button();
             txtSearchBox = new TextBox();
             label1 = new Label();
             btnBack = new Button();
@@ -60,11 +59,11 @@
             // TitleAlbum
             // 
             TitleAlbum.AutoSize = true;
-            TitleAlbum.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            TitleAlbum.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             TitleAlbum.ForeColor = Color.Red;
-            TitleAlbum.Location = new Point(437, 23);
+            TitleAlbum.Location = new Point(441, 9);
             TitleAlbum.Name = "TitleAlbum";
-            TitleAlbum.Size = new Size(91, 21);
+            TitleAlbum.Size = new Size(113, 28);
             TitleAlbum.TabIndex = 0;
             TitleAlbum.Text = "Album List";
             // 
@@ -170,9 +169,9 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(50, 448);
+            txtDescription.Location = new Point(50, 435);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(380, 88);
+            txtDescription.Size = new Size(380, 101);
             txtDescription.TabIndex = 14;
             txtDescription.Text = "";
             // 
@@ -250,22 +249,13 @@
             txtAlbumId.Size = new Size(233, 23);
             txtAlbumId.TabIndex = 22;
             // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(804, 394);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(111, 47);
-            btnSearch.TabIndex = 23;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
-            // 
             // txtSearchBox
             // 
             txtSearchBox.Location = new Point(749, 295);
             txtSearchBox.Name = "txtSearchBox";
             txtSearchBox.Size = new Size(166, 23);
             txtSearchBox.TabIndex = 24;
+            txtSearchBox.TextChanged += txtSearchBox_TextChanged;
             // 
             // label1
             // 
@@ -279,9 +269,9 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(804, 464);
+            btnBack.Location = new Point(837, 36);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(111, 47);
+            btnBack.Size = new Size(78, 28);
             btnBack.TabIndex = 26;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
@@ -295,7 +285,6 @@
             Controls.Add(btnBack);
             Controls.Add(label1);
             Controls.Add(txtSearchBox);
-            Controls.Add(btnSearch);
             Controls.Add(txtAlbumId);
             Controls.Add(AlbumID);
             Controls.Add(btnCancel);
@@ -351,7 +340,6 @@
         private TextBox txtQuantity;
         private Label AlbumID;
         private TextBox txtAlbumId;
-        private Button btnSearch;
         private TextBox txtSearchBox;
         private Label label1;
         private Button btnBack;
