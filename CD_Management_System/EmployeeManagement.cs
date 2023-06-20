@@ -190,5 +190,9 @@ namespace CD_Management_System
             refreshList();
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

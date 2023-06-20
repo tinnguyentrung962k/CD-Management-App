@@ -50,7 +50,7 @@
             btnSearch = new Button();
             label8 = new Label();
             txtPassword = new TextBox();
-            button1 = new Button();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             SuspendLayout();
             // 
@@ -255,21 +255,22 @@
             txtPassword.Size = new Size(252, 23);
             txtPassword.TabIndex = 29;
             // 
-            // button1
+            // btnBack
             // 
-            button1.Location = new Point(697, 402);
-            button1.Name = "button1";
-            button1.Size = new Size(132, 36);
-            button1.TabIndex = 30;
-            button1.Text = "Back";
-            button1.UseVisualStyleBackColor = true;
+            btnBack.Location = new Point(697, 402);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(132, 36);
+            btnBack.TabIndex = 30;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(906, 490);
-            Controls.Add(button1);
+            Controls.Add(btnBack);
             Controls.Add(txtPassword);
             Controls.Add(label8);
             Controls.Add(btnSearch);
@@ -324,6 +325,6 @@
         private Button btnSearch;
         private Label label8;
         private TextBox txtPassword;
-        private Button button1;
+        private Button btnBack;
     }
 }

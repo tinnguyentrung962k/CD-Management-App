@@ -14,13 +14,19 @@ namespace CD_Management_System
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
         SongService _songService = new SongService();
+        AccountService _accountService = new AccountService();
+        ActivityLogService _activityLogService = new ActivityLogService();
 
         public int receiceAlbumID = AlbumManagement.sendAlbumID;
+        public static string receivedUserName = Login.sendUserName;
+        public static string receivedPassword = Login.sendPassword;
+        public static Account LoggedIn = AlbumManagement.LoggedIn;
 
         public SongManagement()
         {
             InitializeComponent();
             this.ControlBox = false;
+            txtLog.Text = "This is for showing status, " + LoggedIn.FullName + ".";
             getSongList();
         }
 
@@ -67,16 +73,12 @@ namespace CD_Management_System
                     }
                     break;
                 case "Delete":
-
                     deleteSong();
                     if (dgvSongList.Rows.Count != 0)
                     {
                         reloadSong();
                     }
-
                     clearForm();
-
-
                     break;
                 case "Cancel":
                     clearForm();
@@ -101,7 +103,17 @@ namespace CD_Management_System
                 song.SongName = txtSongName.Text;
                 song.Duration = txtDuration.Text;
                 _songService.Create(song);
-                txtLog.Text = "Add Successfully!";
+                txtLog.Text = "";
+                txtLog.Text = "Added Successfully!";
+                ActivityLog log = new ActivityLog();
+                log.ActivityDate = DateTime.Now;
+                log.Activity = "Song Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Added Song '"
+                        + song.SongName + "' to CdAlbum '"
+                        + album.AlbumName + "' at "
+                        + DateTime.Now.ToString("hh:mm:ss tt");
+                _activityLogService.Create(log);
             }
 
 
@@ -137,12 +149,23 @@ namespace CD_Management_System
             {
                 var selectedSong = _songService.GetAll()
                                 .Where(p => p.SongId.Equals(id)).FirstOrDefault();
+                ActivityLog log = new ActivityLog();
+                log.ActivityDate = DateTime.Now;
+                log.Activity = "Song Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Deleted Song '"
+                        + selectedSong.SongName + "' from CdAlbum '"
+                        + _albumService.GetAll().Where(a => a.AlbumId == receiceAlbumID).FirstOrDefault().AlbumName
+                        + "' at " + DateTime.Now.ToString("hh:mm:ss tt");
+                _activityLogService.Create(log);
                 _songService.Remove(selectedSong);
+                txtLog.Text = "";
+                txtLog.Text = "Deleted Successfully!";
             }
             else
             {
                 txtLog.Text = "";
-                txtLog.Text = "Wrong SongID format dude";
+                txtLog.Text = "Wrong SongID Format";
             }
         }
 
@@ -187,21 +210,32 @@ namespace CD_Management_System
                             temp.SongName = txtSongName.Text;
                             temp.Duration = txtDuration.Text;
                             temp.AlbumId = receiceAlbumID;
+                            txtLog.Text = "";
+                            txtLog.Text = "Updated Successfully!";
                             _songService.Update(temp);
+                            ActivityLog log = new ActivityLog();
+                            log.ActivityDate = DateTime.Now;
+                            log.Activity = "Song Management Table (" + LoggedIn.RoleId
+                                + "-" + LoggedIn.AccountId + " "
+                                + LoggedIn.FullName + "): Updated Song with ID = '"
+                                + temp.SongId + "' in CdAlbum '"
+                                + _albumService.GetAll().Where(a => a.AlbumId == receiceAlbumID).FirstOrDefault().AlbumName 
+                                + "' at " + DateTime.Now.ToString("hh:mm:ss tt");
+                            _activityLogService.Create(log);
                         }
                     }
                 }
                 else
                 {
                     txtLog.Text = "";
-                    txtLog.Text = "Wrong SongID format dude";
+                    txtLog.Text = "Wrong SongID Format!";
                 }
             }
             else
             {
 
                 txtLog.Text = "";
-                txtLog.Text = "You didn't choose a song dude!";
+                txtLog.Text = "No Song Was Chosen!";
             }
         }
 

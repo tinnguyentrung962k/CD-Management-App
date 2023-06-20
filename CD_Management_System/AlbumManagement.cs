@@ -21,11 +21,16 @@ namespace CD_Management_System
         CdAlbumService _albumService = new CdAlbumService();
         SongService _songService = new SongService();
         AccountService _accountService = new AccountService();
+        ActivityLogService _activityLogService = new ActivityLogService();
+
         public static int sendAlbumID = 0;
         public static string receivedUserName = Login.sendUserName;
         public static string receivedPassword = Login.sendPassword;
+        public static Account LoggedIn;
+
         public AlbumManagement()
         {
+            LoggedIn = _accountService.GetAll().Where(x => x.UserName == receivedUserName).FirstOrDefault();
             InitializeComponent();
             var listAlbum = _albumService.GetAll().Select(p => new
             {
@@ -40,6 +45,7 @@ namespace CD_Management_System
             }).ToList(); ;
             dgvAlbum.DataSource = new BindingSource { DataSource = listAlbum };
         }
+
         public void refreshList(List<Cdalbum> list = null)
         {
             if (list != null)
@@ -85,6 +91,13 @@ namespace CD_Management_System
                     cdAlbum.Description = txtDescription.Text;
                     cdAlbum.Price = Double.Parse(txtPrice.Text);
                     _albumService.Create(cdAlbum);
+                    ActivityLog log = new ActivityLog();
+                    log.ActivityDate = DateTime.Now;
+                    log.Activity = "Album Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Created CdAlbum '" + cdAlbum.AlbumName + "' at "
+                        + DateTime.Now.ToString("hh:mm:ss tt");
+                    _activityLogService.Create(log);
                     refreshList();
                 }
             }
@@ -103,7 +116,16 @@ namespace CD_Management_System
                 }
                 var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
                 if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
+                {
+                    ActivityLog log = new ActivityLog();
+                    log.ActivityDate = DateTime.Now;
+                    log.Activity = "Album Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Deleted CdAlbum '" + cdAlbum.AlbumName + "' at "
+                        + DateTime.Now.ToString("hh:mm:ss tt");
+                    _activityLogService.Create(log);
                     _albumService.Remove(cdAlbum);
+                }
                 refreshList();
             }
         }
@@ -147,6 +169,13 @@ namespace CD_Management_System
                         cdAlbum.Description = txtDescription.Text;
                         cdAlbum.Price = Double.Parse(txtPrice.Text);
                         _albumService.Update(cdAlbum);
+                        ActivityLog log = new ActivityLog();
+                        log.ActivityDate = DateTime.Now;
+                        log.Activity = "Album Management Table (" + LoggedIn.RoleId
+                         + "-" + LoggedIn.AccountId + " "
+                         + LoggedIn.FullName + "): Updated CdAlbum with ID = '" + cdAlbum.AlbumId + "' at "
+                         + DateTime.Now.ToString("hh:mm:ss tt");
+                        _activityLogService.Create(log);
                         refreshList();
                     }
                 }
@@ -208,21 +237,9 @@ namespace CD_Management_System
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            var user = _accountService.GetAll().Where(p => p.UserName == receivedUserName && p.PassWord == receivedPassword).FirstOrDefault();
-            if (user.RoleId == "MG")
-            {
-                this.Hide();
-                Form mngMenu = new AdminMenu();
-                mngMenu.ShowDialog();
-            }
-            else
-            {
-                this.Hide();
-                Form empMenu = new EmployeeMenu();
-                empMenu.ShowDialog();
-            }
+            this.Close();
         }
     }
 }

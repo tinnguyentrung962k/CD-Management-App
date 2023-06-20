@@ -7,6 +7,9 @@
     <Compile Update="AlbumManagement.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AllActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="EmployeeManagement.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -53,7 +53,7 @@
             btnSearch = new Button();
             txtSearchBox = new TextBox();
             label1 = new Label();
-            button1 = new Button();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAlbum).BeginInit();
             SuspendLayout();
             // 
@@ -277,22 +277,22 @@
             label1.Text = "Search \r\n(Album Name, Author, Genre)";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btnBack
             // 
-            button1.Location = new Point(804, 464);
-            button1.Name = "button1";
-            button1.Size = new Size(111, 47);
-            button1.TabIndex = 26;
-            button1.Text = "Back";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnBack.Location = new Point(804, 464);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(111, 47);
+            btnBack.TabIndex = 26;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // AlbumManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(944, 565);
-            Controls.Add(button1);
+            Controls.Add(btnBack);
             Controls.Add(label1);
             Controls.Add(txtSearchBox);
             Controls.Add(btnSearch);
@@ -354,6 +354,6 @@
         private Button btnSearch;
         private TextBox txtSearchBox;
         private Label label1;
-        private Button button1;
+        private Button btnBack;
     }
 }
