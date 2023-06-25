@@ -203,7 +203,7 @@ namespace CD_Management_System
                     {
                         if (!checkRegex(txtDuration.Text))
                         {
-                            txtLog.Text = "Invalid Format Time";
+                            txtLog.Text = "Invalid Format Time, please following this format (mm:ss)";
                         }
                         else
                         {
@@ -253,7 +253,7 @@ namespace CD_Management_System
         private bool checkRegex(string s)
         {
             bool valid = true;
-            var regex = @"^[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$";
+            var regex = @"^[0-5][0-9]:[0-5][0-9]$";
             var format = new Regex(regex);
             if (!format.IsMatch(s))
             {

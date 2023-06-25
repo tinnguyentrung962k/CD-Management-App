@@ -46,7 +46,7 @@ namespace CD_Management_System
             DialogResult dialogResult = MessageBox.Show("Are you sure to log out?", "Confirm", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                this.Hide();
+                this.Close();
                 Form form = new Login();
                 form.Show();
             }

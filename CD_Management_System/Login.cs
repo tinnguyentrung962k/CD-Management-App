@@ -41,7 +41,8 @@ namespace CD_Management_System
                     Form mngMenu = new AdminMenu();
                     mngMenu.ShowDialog();
                 }
-                else {
+                else
+                {
                     this.Hide();
                     Form empMenu = new EmployeeMenu();
                     empMenu.ShowDialog();
@@ -63,7 +64,7 @@ namespace CD_Management_System
             {
 
                 return true;
-                
+
             }
             return false;
         }
@@ -73,5 +74,6 @@ namespace CD_Management_System
             txtUsername.Text = String.Empty;
             txtPassword.Text = String.Empty;
         }
+
     }
 }

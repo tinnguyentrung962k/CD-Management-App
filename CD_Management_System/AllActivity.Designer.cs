@@ -36,18 +36,20 @@
             // dgvActivityList
             // 
             dgvActivityList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvActivityList.Location = new Point(12, 12);
+            dgvActivityList.Location = new Point(10, 9);
+            dgvActivityList.Margin = new Padding(3, 2, 3, 2);
             dgvActivityList.Name = "dgvActivityList";
             dgvActivityList.RowHeadersWidth = 51;
             dgvActivityList.RowTemplate.Height = 29;
-            dgvActivityList.Size = new Size(910, 482);
+            dgvActivityList.Size = new Size(1243, 362);
             dgvActivityList.TabIndex = 0;
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(928, 426);
+            btnBack.Location = new Point(1270, 320);
+            btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(200, 68);
+            btnBack.Size = new Size(175, 51);
             btnBack.TabIndex = 1;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
@@ -55,11 +57,12 @@
             // 
             // AllActivity
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1140, 506);
+            ClientSize = new Size(1457, 380);
             Controls.Add(btnBack);
             Controls.Add(dgvActivityList);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AllActivity";
             Text = "AllActivity";
             ((System.ComponentModel.ISupportInitialize)dgvActivityList).EndInit();

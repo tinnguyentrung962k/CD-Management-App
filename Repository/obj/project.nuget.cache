@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7PJKWb93H9jWkrzgiL74CeCF8pMQqlpjR4lYJWFiXqJFj/flTsV/x0Aj2+bDtZWB86IObvEA24tbhrP485udRg==",
+  "dgSpecHash": "d/snaiRuPVxPLHrutD0cYrbWyKoHTe+NNY4Y8XyaM93zDsM4C58vKp1rDRkhAGi7bkUFttjPHe1l2VvJudrhsQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\OneDrive\\Desktop\\CD-Management-App\\Repository\\Repository.csproj",
+  "projectFilePath": "E:\\CD-Management-App\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",

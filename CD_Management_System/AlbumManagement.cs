@@ -73,13 +73,13 @@ namespace CD_Management_System
             Cdalbum cdAlbum = new Cdalbum();
             if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
             {
-                MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
+                MessageBox.Show("Please fill in the blank", "Notification", MessageBoxButtons.OK);
             }
             else
             {
                 if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
                 {
-                    MessageBox.Show("Invalid format", "Warning", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Format", "Notification", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -151,13 +151,13 @@ namespace CD_Management_System
             {
                 if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
                 {
-                    MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
+                    MessageBox.Show("Please fill in the blank", "Notification", MessageBoxButtons.OK);
                 }
                 else
                 {
                     if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
                     {
-                        MessageBox.Show("Invalid format", "Warning", MessageBoxButtons.OK);
+                        MessageBox.Show("Invalid Format", "Notification", MessageBoxButtons.OK);
                     }
                     else
                     {

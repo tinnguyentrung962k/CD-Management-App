@@ -69,15 +69,15 @@ namespace CD_Management_System
             Account account = new Account();
             if (txtUserName.Text == "" || txtFullName.Text == "" || txtEmail.Text == "" || txtAddress.Text == "" || txtPhoneNumber.Text == "" || txtPassword.Text == "")
             {
-                MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
+                MessageBox.Show("Please fill in the blank", "Notification", MessageBoxButtons.OK);
             }
             else if (!emailRegex(txtEmail.Text))
             {
-                MessageBox.Show("Email sai format", "Thong bao", MessageBoxButtons.OK);
+                MessageBox.Show("Invalid Format for email", "Notification", MessageBoxButtons.OK);
             }
             else if (!phoneNumberRegex(txtPhoneNumber.Text))
             {
-                MessageBox.Show("So dien thoai sai format", "Thong bao", MessageBoxButtons.OK);
+                MessageBox.Show("Invalid Format for Phone Number", "Notification", MessageBoxButtons.OK);
             }
             else
             {
@@ -157,15 +157,15 @@ namespace CD_Management_System
             {
                 if (txtUserName.Text == "" || txtFullName.Text == "" || txtEmail.Text == "" || txtAddress.Text == "" || txtPhoneNumber.Text == "")
                 {
-                    MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
+                    MessageBox.Show("Please fill the blank", "Notification", MessageBoxButtons.OK);
                 }
                 else if (!emailRegex(txtEmail.Text))
                 {
-                    MessageBox.Show("Email sai format", "Thong bao", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Format for email", "Notification", MessageBoxButtons.OK);
                 }
                 else if (!phoneNumberRegex(txtPhoneNumber.Text))
                 {
-                    MessageBox.Show("So dien thoai sai format", "Thong bao", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Format for Phone Number", "Notification", MessageBoxButtons.OK);
                 }
                 else
                 {
