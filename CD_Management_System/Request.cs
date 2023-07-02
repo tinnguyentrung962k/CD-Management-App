@@ -16,18 +16,14 @@ namespace CD_Management_System
         private bool isAsc = true;
         private string filter = "RequestId";
         private string searchKey = "";
-        public Request()
+        public Request(Account user)
         {
             InitializeComponent();
             crr = new CustomerRequestService();
             initializeReq();
             updateDvg();
 
-            // change later
-            user = new Account();
-            user.AccountId = 1;
-            user.FullName = "Phạm Quang Thái";
-            user.RoleId = "EM";
+            this.user = user;
             searchBox.DataSource = new List<string> {
                 "RequestId",
                 "CustomerName",

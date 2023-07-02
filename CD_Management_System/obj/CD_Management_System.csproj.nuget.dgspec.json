@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj": {}
+    "C:\\Users\\trung\\Desktop\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj": {}
   },
   "projects": {
-    "E:\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj": {
+    "C:\\Users\\trung\\Desktop\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj",
+        "projectUniqueName": "C:\\Users\\trung\\Desktop\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj",
         "projectName": "CD_Management_System",
-        "projectPath": "E:\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\CD-Management-App\\CD_Management_System\\obj\\",
+        "projectPath": "C:\\Users\\trung\\Desktop\\CD-Management-App\\CD_Management_System\\CD_Management_System.csproj",
+        "packagesPath": "C:\\Users\\trung\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trung\\Desktop\\CD-Management-App\\CD_Management_System\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "E:\\CD-Management-App\\Repository\\Repository.csproj": {
-                "projectPath": "E:\\CD-Management-App\\Repository\\Repository.csproj"
+              "C:\\Users\\trung\\Desktop\\CD-Management-App\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\trung\\Desktop\\CD-Management-App\\Repository\\Repository.csproj"
               }
             }
           }
@@ -67,24 +66,24 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\CD-Management-App\\Repository\\Repository.csproj": {
+    "C:\\Users\\trung\\Desktop\\CD-Management-App\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CD-Management-App\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\trung\\Desktop\\CD-Management-App\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "E:\\CD-Management-App\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\CD-Management-App\\Repository\\obj\\",
+        "projectPath": "C:\\Users\\trung\\Desktop\\CD-Management-App\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\trung\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trung\\Desktop\\CD-Management-App\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -93,7 +92,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -157,7 +155,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
