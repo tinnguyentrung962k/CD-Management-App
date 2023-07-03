@@ -52,9 +52,8 @@
             order = new Label();
             searchBox = new ComboBox();
             search = new Label();
-            cancelBtn = new Button();
             confirmBtn = new Button();
-            checkBtn = new Button();
+            updateBtn = new Button();
             clearBtn = new Button();
             textCount = new Label();
             ((System.ComponentModel.ISupportInitialize)requestDgv).BeginInit();
@@ -65,117 +64,107 @@
             requestDgv.AllowUserToAddRows = false;
             requestDgv.AllowUserToDeleteRows = false;
             requestDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            requestDgv.Location = new Point(12, 11);
-            requestDgv.Margin = new Padding(3, 2, 3, 2);
+            requestDgv.Location = new Point(14, 15);
             requestDgv.Name = "requestDgv";
             requestDgv.ReadOnly = true;
             requestDgv.RowHeadersWidth = 51;
             requestDgv.RowTemplate.Height = 29;
-            requestDgv.Size = new Size(778, 141);
+            requestDgv.Size = new Size(889, 188);
             requestDgv.TabIndex = 0;
             requestDgv.CellDoubleClick += requestDgv_CellDoubleClick;
             // 
             // name
             // 
             name.AutoSize = true;
-            name.Location = new Point(205, 174);
+            name.Location = new Point(234, 232);
             name.Name = "name";
-            name.Size = new Size(39, 15);
+            name.Size = new Size(49, 20);
             name.TabIndex = 1;
             name.Text = "Name";
             // 
             // email
             // 
             email.AutoSize = true;
-            email.Location = new Point(205, 304);
+            email.Location = new Point(234, 405);
             email.Name = "email";
-            email.Size = new Size(36, 15);
+            email.Size = new Size(46, 20);
             email.TabIndex = 2;
             email.Text = "Email";
             // 
             // phoneNumber
             // 
             phoneNumber.AutoSize = true;
-            phoneNumber.Location = new Point(205, 243);
+            phoneNumber.Location = new Point(234, 324);
             phoneNumber.Name = "phoneNumber";
-            phoneNumber.Size = new Size(88, 15);
+            phoneNumber.Size = new Size(108, 20);
             phoneNumber.TabIndex = 3;
             phoneNumber.Text = "Phone Number";
             // 
             // description
             // 
             description.AutoSize = true;
-            description.Location = new Point(378, 204);
+            description.Location = new Point(432, 272);
             description.Name = "description";
-            description.Size = new Size(67, 15);
+            description.Size = new Size(85, 20);
             description.TabIndex = 4;
             description.Text = "Description";
             // 
             // status
             // 
             status.AutoSize = true;
-            status.Location = new Point(205, 371);
+            status.Location = new Point(234, 495);
             status.Name = "status";
-            status.Size = new Size(39, 15);
+            status.Size = new Size(49, 20);
             status.TabIndex = 5;
             status.Text = "Status";
             // 
             // submitDate
             // 
             submitDate.AutoSize = true;
-            submitDate.Location = new Point(205, 438);
+            submitDate.Location = new Point(234, 584);
             submitDate.Name = "submitDate";
-            submitDate.Size = new Size(72, 15);
+            submitDate.Size = new Size(92, 20);
             submitDate.TabIndex = 6;
             submitDate.Text = "Submit Date";
             // 
             // txtName
             // 
-            txtName.Location = new Point(205, 198);
-            txtName.Margin = new Padding(3, 2, 3, 2);
+            txtName.Location = new Point(234, 264);
             txtName.Name = "txtName";
-            txtName.Size = new Size(151, 23);
+            txtName.Size = new Size(172, 27);
             txtName.TabIndex = 7;
-            txtName.KeyPress += always_handled;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(205, 328);
-            txtEmail.Margin = new Padding(3, 2, 3, 2);
+            txtEmail.Location = new Point(234, 437);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(151, 23);
+            txtEmail.Size = new Size(172, 27);
             txtEmail.TabIndex = 8;
-            txtEmail.KeyPress += event_handled;
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(205, 268);
-            txtPhone.Margin = new Padding(3, 2, 3, 2);
+            txtPhone.Location = new Point(234, 357);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(151, 23);
+            txtPhone.Size = new Size(172, 27);
             txtPhone.TabIndex = 9;
-            txtPhone.KeyPress += event_handled;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(378, 233);
-            txtDescription.Margin = new Padding(3, 2, 3, 2);
+            txtDescription.Location = new Point(432, 311);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.ScrollBars = ScrollBars.Vertical;
-            txtDescription.Size = new Size(271, 255);
+            txtDescription.Size = new Size(309, 339);
             txtDescription.TabIndex = 10;
             txtDescription.TextChanged += txtDescription_TextChanged;
-            txtDescription.KeyPress += event_handled;
             // 
             // acceptBtn
             // 
             acceptBtn.AutoSize = true;
             acceptBtn.Enabled = false;
-            acceptBtn.Location = new Point(676, 187);
-            acceptBtn.Margin = new Padding(3, 2, 3, 2);
+            acceptBtn.Location = new Point(773, 236);
             acceptBtn.Name = "acceptBtn";
-            acceptBtn.Size = new Size(114, 48);
+            acceptBtn.Size = new Size(130, 64);
             acceptBtn.TabIndex = 13;
             acceptBtn.Text = "Accept Request";
             acceptBtn.UseVisualStyleBackColor = true;
@@ -185,10 +174,9 @@
             // 
             denyBtn.AutoSize = true;
             denyBtn.Enabled = false;
-            denyBtn.Location = new Point(676, 249);
-            denyBtn.Margin = new Padding(3, 2, 3, 2);
+            denyBtn.Location = new Point(773, 332);
             denyBtn.Name = "denyBtn";
-            denyBtn.Size = new Size(114, 48);
+            denyBtn.Size = new Size(130, 64);
             denyBtn.TabIndex = 14;
             denyBtn.Text = "Deny Request";
             denyBtn.UseVisualStyleBackColor = true;
@@ -198,10 +186,9 @@
             // 
             removeBtn.AutoSize = true;
             removeBtn.Enabled = false;
-            removeBtn.Location = new Point(676, 440);
-            removeBtn.Margin = new Padding(3, 2, 3, 2);
+            removeBtn.Location = new Point(773, 587);
             removeBtn.Name = "removeBtn";
-            removeBtn.Size = new Size(114, 48);
+            removeBtn.Size = new Size(130, 64);
             removeBtn.TabIndex = 15;
             removeBtn.Text = "Remove Request";
             removeBtn.UseVisualStyleBackColor = true;
@@ -210,10 +197,9 @@
             // backBtn
             // 
             backBtn.AutoSize = true;
-            backBtn.Location = new Point(12, 440);
-            backBtn.Margin = new Padding(3, 2, 3, 2);
+            backBtn.Location = new Point(14, 587);
             backBtn.Name = "backBtn";
-            backBtn.Size = new Size(114, 48);
+            backBtn.Size = new Size(130, 64);
             backBtn.TabIndex = 16;
             backBtn.Text = "Back";
             backBtn.UseVisualStyleBackColor = true;
@@ -222,10 +208,9 @@
             // addBtn
             // 
             addBtn.AutoSize = true;
-            addBtn.Location = new Point(676, 373);
-            addBtn.Margin = new Padding(3, 2, 3, 2);
+            addBtn.Location = new Point(773, 497);
             addBtn.Name = "addBtn";
-            addBtn.Size = new Size(114, 48);
+            addBtn.Size = new Size(130, 64);
             addBtn.TabIndex = 17;
             addBtn.Text = "Add Request";
             addBtn.UseVisualStyleBackColor = true;
@@ -233,47 +218,43 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(12, 255);
-            txtSearch.Margin = new Padding(3, 2, 3, 2);
+            txtSearch.Location = new Point(14, 394);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(120, 23);
+            txtSearch.Size = new Size(137, 27);
             txtSearch.TabIndex = 20;
             txtSearch.TextChanged += searchText;
             // 
             // searchList
             // 
             searchList.AutoSize = true;
-            searchList.Location = new Point(12, 163);
+            searchList.Location = new Point(14, 217);
             searchList.Name = "searchList";
-            searchList.Size = new Size(60, 15);
+            searchList.Size = new Size(142, 20);
             searchList.TabIndex = 21;
-            searchList.Text = "Search list";
+            searchList.Text = "Order by (Asc/Desc)";
             // 
             // txtDate
             // 
-            txtDate.Location = new Point(205, 465);
-            txtDate.Margin = new Padding(3, 2, 3, 2);
+            txtDate.Location = new Point(234, 620);
             txtDate.Name = "txtDate";
-            txtDate.Size = new Size(151, 23);
+            txtDate.Size = new Size(172, 27);
             txtDate.TabIndex = 12;
             txtDate.KeyPress += always_handled;
             // 
             // txtStatus
             // 
-            txtStatus.Location = new Point(205, 398);
-            txtStatus.Margin = new Padding(3, 2, 3, 2);
+            txtStatus.Location = new Point(234, 531);
             txtStatus.Name = "txtStatus";
-            txtStatus.Size = new Size(151, 23);
+            txtStatus.Size = new Size(172, 27);
             txtStatus.TabIndex = 23;
             txtStatus.KeyPress += always_handled;
             // 
             // clearSearch
             // 
             clearSearch.AutoSize = true;
-            clearSearch.Location = new Point(137, 255);
-            clearSearch.Margin = new Padding(3, 2, 3, 2);
+            clearSearch.Location = new Point(14, 427);
             clearSearch.Name = "clearSearch";
-            clearSearch.Size = new Size(46, 25);
+            clearSearch.Size = new Size(53, 33);
             clearSearch.TabIndex = 24;
             clearSearch.Text = "Clear";
             clearSearch.UseVisualStyleBackColor = true;
@@ -283,9 +264,9 @@
             // 
             order.Cursor = Cursors.Hand;
             order.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            order.Location = new Point(150, 186);
+            order.Location = new Point(171, 248);
             order.Name = "order";
-            order.Size = new Size(24, 21);
+            order.Size = new Size(27, 28);
             order.TabIndex = 18;
             order.Text = "^";
             order.TextAlign = ContentAlignment.MiddleCenter;
@@ -294,67 +275,50 @@
             // searchBox
             // 
             searchBox.FormattingEnabled = true;
-            searchBox.Location = new Point(12, 187);
-            searchBox.Margin = new Padding(3, 2, 3, 2);
+            searchBox.Location = new Point(14, 249);
             searchBox.Name = "searchBox";
-            searchBox.Size = new Size(120, 23);
+            searchBox.Size = new Size(137, 28);
             searchBox.TabIndex = 19;
             searchBox.SelectedIndexChanged += searchIndexChanged;
             // 
             // search
             // 
             search.AutoSize = true;
-            search.Location = new Point(12, 217);
+            search.Location = new Point(14, 299);
             search.Name = "search";
-            search.Size = new Size(165, 30);
+            search.Size = new Size(179, 100);
             search.TabIndex = 26;
-            search.Text = "Search by customer name\r\n(Remember only accept telex)\r\n";
-            // 
-            // cancelBtn
-            // 
-            cancelBtn.AutoSize = true;
-            cancelBtn.Location = new Point(676, 373);
-            cancelBtn.Margin = new Padding(3, 2, 3, 2);
-            cancelBtn.Name = "cancelBtn";
-            cancelBtn.Size = new Size(114, 48);
-            cancelBtn.TabIndex = 27;
-            cancelBtn.Text = "Cancel Request";
-            cancelBtn.UseVisualStyleBackColor = true;
-            cancelBtn.Visible = false;
-            cancelBtn.Click += cancelBtn_Click;
+            search.Text = "Search by customer name\r\n- put in full letter for \r\nvietnamese word\r\nEx: ê, ô, â,...\r\n\r\n";
             // 
             // confirmBtn
             // 
             confirmBtn.AutoSize = true;
             confirmBtn.Enabled = false;
-            confirmBtn.Location = new Point(676, 308);
-            confirmBtn.Margin = new Padding(3, 2, 3, 2);
+            confirmBtn.Location = new Point(773, 411);
             confirmBtn.Name = "confirmBtn";
-            confirmBtn.Size = new Size(114, 48);
+            confirmBtn.Size = new Size(130, 64);
             confirmBtn.TabIndex = 28;
             confirmBtn.Text = "Confirm Request";
             confirmBtn.UseVisualStyleBackColor = true;
             confirmBtn.Click += confirmBtn_Click;
             // 
-            // checkBtn
+            // updateBtn
             // 
-            checkBtn.AutoSize = true;
-            checkBtn.Location = new Point(451, 174);
-            checkBtn.Margin = new Padding(3, 2, 3, 2);
-            checkBtn.Name = "checkBtn";
-            checkBtn.Size = new Size(95, 47);
-            checkBtn.TabIndex = 30;
-            checkBtn.Text = "Check Request";
-            checkBtn.UseVisualStyleBackColor = true;
-            checkBtn.Click += checkBtn_Click;
+            updateBtn.AutoSize = true;
+            updateBtn.Location = new Point(523, 236);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(130, 63);
+            updateBtn.TabIndex = 30;
+            updateBtn.Text = "Update Request";
+            updateBtn.UseVisualStyleBackColor = true;
+            updateBtn.Click += updateBtn_Click;
             // 
             // clearBtn
             // 
             clearBtn.AutoSize = true;
-            clearBtn.Location = new Point(560, 174);
-            clearBtn.Margin = new Padding(3, 2, 3, 2);
+            clearBtn.Location = new Point(659, 236);
             clearBtn.Name = "clearBtn";
-            clearBtn.Size = new Size(89, 47);
+            clearBtn.Size = new Size(110, 63);
             clearBtn.TabIndex = 31;
             clearBtn.Text = "Clear Request";
             clearBtn.UseVisualStyleBackColor = true;
@@ -363,22 +327,21 @@
             // textCount
             // 
             textCount.AutoSize = true;
-            textCount.Location = new Point(549, 468);
+            textCount.Location = new Point(627, 624);
             textCount.Name = "textCount";
-            textCount.Size = new Size(52, 15);
+            textCount.Size = new Size(63, 20);
             textCount.TabIndex = 32;
             textCount.Text = "Count: 0";
             // 
             // Request
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(801, 502);
+            ClientSize = new Size(915, 669);
             Controls.Add(textCount);
             Controls.Add(clearBtn);
-            Controls.Add(checkBtn);
+            Controls.Add(updateBtn);
             Controls.Add(confirmBtn);
-            Controls.Add(cancelBtn);
             Controls.Add(search);
             Controls.Add(clearSearch);
             Controls.Add(txtStatus);
@@ -403,7 +366,6 @@
             Controls.Add(email);
             Controls.Add(name);
             Controls.Add(requestDgv);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Request";
             Text = "Request";
             ((System.ComponentModel.ISupportInitialize)requestDgv).EndInit();
@@ -437,9 +399,8 @@
         private Label order;
         private ComboBox searchBox;
         private Label search;
-        private Button cancelBtn;
         private Button confirmBtn;
-        private Button checkBtn;
+        private Button updateBtn;
         private Button clearBtn;
         private Label textCount;
     }
