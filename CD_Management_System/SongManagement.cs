@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Repository.Models;
 using Repository.Services;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -13,13 +14,19 @@ namespace CD_Management_System
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
         SongService _songService = new SongService();
+        AccountService _accountService = new AccountService();
+        ActivityLogService _activityLogService = new ActivityLogService();
 
         public int receiceAlbumID = AlbumManagement.sendAlbumID;
+        public static string receivedUserName = Login.sendUserName;
+        public static string receivedPassword = Login.sendPassword;
+        public static Account LoggedIn = AlbumManagement.LoggedIn;
 
         public SongManagement()
         {
             InitializeComponent();
             this.ControlBox = false;
+            txtLog.Text = "This is for showing status, " + LoggedIn.FullName + ".";
             getSongList();
         }
 
@@ -66,16 +73,12 @@ namespace CD_Management_System
                     }
                     break;
                 case "Delete":
-
                     deleteSong();
                     if (dgvSongList.Rows.Count != 0)
                     {
                         reloadSong();
                     }
-
                     clearForm();
-
-
                     break;
                 case "Cancel":
                     clearForm();
@@ -90,7 +93,8 @@ namespace CD_Management_System
         {
             var song = new Song();
 
-            if (!checkRegex(txtDuration.Text)) {
+            if (!checkRegex(txtDuration.Text))
+            {
                 txtLog.Text = "Invalid Format Time";
             }
             else
@@ -99,9 +103,19 @@ namespace CD_Management_System
                 song.SongName = txtSongName.Text;
                 song.Duration = txtDuration.Text;
                 _songService.Create(song);
-                txtLog.Text = "Add Successfully!";
+                txtLog.Text = "";
+                txtLog.Text = "Added Successfully!";
+                ActivityLog log = new ActivityLog();
+                log.ActivityDate = DateTime.Now;
+                log.Activity = "Song Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Added Song '"
+                        + song.SongName + "' to CdAlbum '"
+                        + album.AlbumName + "' at "
+                        + DateTime.Now.ToString("hh:mm:ss tt");
+                _activityLogService.Create(log);
             }
-            
+
 
         }
 
@@ -135,12 +149,23 @@ namespace CD_Management_System
             {
                 var selectedSong = _songService.GetAll()
                                 .Where(p => p.SongId.Equals(id)).FirstOrDefault();
+                ActivityLog log = new ActivityLog();
+                log.ActivityDate = DateTime.Now;
+                log.Activity = "Song Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Deleted Song '"
+                        + selectedSong.SongName + "' from CdAlbum '"
+                        + _albumService.GetAll().Where(a => a.AlbumId == receiceAlbumID).FirstOrDefault().AlbumName
+                        + "' at " + DateTime.Now.ToString("hh:mm:ss tt");
+                _activityLogService.Create(log);
                 _songService.Remove(selectedSong);
+                txtLog.Text = "";
+                txtLog.Text = "Deleted Successfully!";
             }
             else
             {
                 txtLog.Text = "";
-                txtLog.Text = "Wrong SongID format dude";
+                txtLog.Text = "Wrong SongID Format";
             }
         }
 
@@ -178,27 +203,39 @@ namespace CD_Management_System
                     {
                         if (!checkRegex(txtDuration.Text))
                         {
-                            txtLog.Text = "Invalid Format Time";
+                            txtLog.Text = "Invalid Format Time, please following this format (mm:ss)";
                         }
-                        else {
+                        else
+                        {
                             temp.SongName = txtSongName.Text;
                             temp.Duration = txtDuration.Text;
                             temp.AlbumId = receiceAlbumID;
+                            txtLog.Text = "";
+                            txtLog.Text = "Updated Successfully!";
                             _songService.Update(temp);
+                            ActivityLog log = new ActivityLog();
+                            log.ActivityDate = DateTime.Now;
+                            log.Activity = "Song Management Table (" + LoggedIn.RoleId
+                                + "-" + LoggedIn.AccountId + " "
+                                + LoggedIn.FullName + "): Updated Song with ID = '"
+                                + temp.SongId + "' in CdAlbum '"
+                                + _albumService.GetAll().Where(a => a.AlbumId == receiceAlbumID).FirstOrDefault().AlbumName 
+                                + "' at " + DateTime.Now.ToString("hh:mm:ss tt");
+                            _activityLogService.Create(log);
                         }
                     }
                 }
                 else
                 {
                     txtLog.Text = "";
-                    txtLog.Text = "Wrong SongID format dude";
+                    txtLog.Text = "Wrong SongID Format!";
                 }
             }
             else
             {
 
                 txtLog.Text = "";
-                txtLog.Text = "You didn't choose a song dude!";
+                txtLog.Text = "No Song Was Chosen!";
             }
         }
 
@@ -213,11 +250,13 @@ namespace CD_Management_System
             }
             return valid;
         }
-        private bool checkRegex(string s) {
-            bool valid = true; 
-            var regex = @"^[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$";
+        private bool checkRegex(string s)
+        {
+            bool valid = true;
+            var regex = @"^[0-5][0-9]:[0-5][0-9]$";
             var format = new Regex(regex);
-            if (!format.IsMatch(s)) {
+            if (!format.IsMatch(s))
+            {
                 valid = false;
             }
             return valid;
@@ -227,6 +266,20 @@ namespace CD_Management_System
         {
             AlbumManagement.sendAlbumID = 0;
             this.Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgvSongList.DataSource = new BindingSource()
+            {
+                DataSource = _songService.GetAll().Where(p => p.SongName.Contains(txtSearch.Text) && p.AlbumId.Equals(receiceAlbumID)).Select(p => new
+                {
+                    p.SongId,
+                    p.SongName,
+                    p.Duration,
+                    p.Album.AlbumName
+                }).ToList()
+            };
         }
     }
 }

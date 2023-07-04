@@ -47,20 +47,23 @@
             btnAdd = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
-            button4 = new Button();
+            btnCancel = new Button();
             AlbumID = new Label();
             txtAlbumId = new TextBox();
+            txtSearchBox = new TextBox();
+            label1 = new Label();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAlbum).BeginInit();
             SuspendLayout();
             // 
             // TitleAlbum
             // 
             TitleAlbum.AutoSize = true;
-            TitleAlbum.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            TitleAlbum.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             TitleAlbum.ForeColor = Color.Red;
-            TitleAlbum.Location = new Point(352, 35);
+            TitleAlbum.Location = new Point(441, 9);
             TitleAlbum.Name = "TitleAlbum";
-            TitleAlbum.Size = new Size(91, 21);
+            TitleAlbum.Size = new Size(113, 28);
             TitleAlbum.TabIndex = 0;
             TitleAlbum.Text = "Album List";
             // 
@@ -70,7 +73,7 @@
             dgvAlbum.Location = new Point(41, 70);
             dgvAlbum.Name = "dgvAlbum";
             dgvAlbum.RowTemplate.Height = 25;
-            dgvAlbum.Size = new Size(728, 167);
+            dgvAlbum.Size = new Size(874, 167);
             dgvAlbum.TabIndex = 1;
             dgvAlbum.CellContentClick += dgvAlbum_CellContentClick;
             dgvAlbum.CellDoubleClick += dgvAlbum_CellDoubleClick;
@@ -125,15 +128,15 @@
             // 
             // txtGenre
             // 
-            txtGenre.Location = new Point(554, 256);
+            txtGenre.Location = new Point(480, 256);
             txtGenre.Name = "txtGenre";
-            txtGenre.Size = new Size(197, 23);
+            txtGenre.Size = new Size(224, 23);
             txtGenre.TabIndex = 8;
             // 
             // Genre
             // 
             Genre.AutoSize = true;
-            Genre.Location = new Point(475, 259);
+            Genre.Location = new Point(436, 259);
             Genre.Name = "Genre";
             Genre.Size = new Size(38, 15);
             Genre.TabIndex = 9;
@@ -142,7 +145,7 @@
             // Quantity
             // 
             Quantity.AutoSize = true;
-            Quantity.Location = new Point(475, 298);
+            Quantity.Location = new Point(421, 298);
             Quantity.Name = "Quantity";
             Quantity.Size = new Size(53, 15);
             Quantity.TabIndex = 10;
@@ -150,9 +153,9 @@
             // 
             // txtQuantity
             // 
-            txtQuantity.Location = new Point(554, 290);
+            txtQuantity.Location = new Point(480, 295);
             txtQuantity.Name = "txtQuantity";
-            txtQuantity.Size = new Size(197, 23);
+            txtQuantity.Size = new Size(224, 23);
             txtQuantity.TabIndex = 11;
             // 
             // Description
@@ -166,23 +169,23 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(50, 448);
+            txtDescription.Location = new Point(50, 435);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(380, 88);
+            txtDescription.Size = new Size(380, 101);
             txtDescription.TabIndex = 14;
             txtDescription.Text = "";
             // 
             // txtPrice
             // 
-            txtPrice.Location = new Point(554, 334);
+            txtPrice.Location = new Point(480, 334);
             txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(197, 23);
+            txtPrice.Size = new Size(224, 23);
             txtPrice.TabIndex = 15;
             // 
             // Price
             // 
             Price.AutoSize = true;
-            Price.Location = new Point(480, 337);
+            Price.Location = new Point(441, 337);
             Price.Name = "Price";
             Price.Size = new Size(33, 15);
             Price.TabIndex = 16;
@@ -218,14 +221,16 @@
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
             // 
-            // button4
+            // btnCancel
             // 
-            button4.Location = new Point(641, 464);
-            button4.Name = "button4";
-            button4.Size = new Size(128, 47);
-            button4.TabIndex = 20;
-            button4.Text = "Search";
-            button4.UseVisualStyleBackColor = true;
+            btnCancel.Location = new Point(641, 464);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(128, 47);
+            btnCancel.TabIndex = 20;
+            btnCancel.TabStop = false;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // AlbumID
             // 
@@ -244,14 +249,45 @@
             txtAlbumId.Size = new Size(233, 23);
             txtAlbumId.TabIndex = 22;
             // 
+            // txtSearchBox
+            // 
+            txtSearchBox.Location = new Point(749, 295);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.Size = new Size(166, 23);
+            txtSearchBox.TabIndex = 24;
+            txtSearchBox.TextChanged += txtSearchBox_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(749, 249);
+            label1.Name = "label1";
+            label1.Size = new Size(166, 30);
+            label1.TabIndex = 25;
+            label1.Text = "Search \r\n(Album Name, Author, Genre)";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnBack
+            // 
+            btnBack.Location = new Point(837, 36);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(78, 28);
+            btnBack.TabIndex = 26;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
+            // 
             // AlbumManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(797, 565);
+            ClientSize = new Size(944, 565);
+            Controls.Add(btnBack);
+            Controls.Add(label1);
+            Controls.Add(txtSearchBox);
             Controls.Add(txtAlbumId);
             Controls.Add(AlbumID);
-            Controls.Add(button4);
+            Controls.Add(btnCancel);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
@@ -299,10 +335,13 @@
         private Button btnAdd;
         private Button btnDelete;
         private Button btnUpdate;
-        private Button button4;
+        private Button btnCancel;
         private Label Quantity;
         private TextBox txtQuantity;
         private Label AlbumID;
         private TextBox txtAlbumId;
+        private TextBox txtSearchBox;
+        private Label label1;
+        private Button btnBack;
     }
 }

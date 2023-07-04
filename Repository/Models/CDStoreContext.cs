@@ -146,10 +146,6 @@ namespace Repository.Models
                     .HasMaxLength(4000)
                     .HasColumnName("description");
 
-                entity.Property(e => e.ImgSrc)
-                    .HasMaxLength(4000)
-                    .HasColumnName("imgSrc");
-
                 entity.Property(e => e.Price).HasColumnName("price");
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");

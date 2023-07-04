@@ -20,9 +20,17 @@ namespace CD_Management_System
         CDStoreContext _context = new CDStoreContext();
         CdAlbumService _albumService = new CdAlbumService();
         SongService _songService = new SongService();
+        AccountService _accountService = new AccountService();
+        ActivityLogService _activityLogService = new ActivityLogService();
+
         public static int sendAlbumID = 0;
+        public static string receivedUserName = Login.sendUserName;
+        public static string receivedPassword = Login.sendPassword;
+        public static Account LoggedIn;
+
         public AlbumManagement()
         {
+            LoggedIn = _accountService.GetAll().Where(x => x.UserName == receivedUserName).FirstOrDefault();
             InitializeComponent();
             var listAlbum = _albumService.GetAll().Select(p => new
             {
@@ -33,11 +41,11 @@ namespace CD_Management_System
                 p.AlbumGenre,
                 p.Price,
                 p.Quantity,
-                p.Description,
-                p.ImgSrc
+                p.Description
             }).ToList(); ;
             dgvAlbum.DataSource = new BindingSource { DataSource = listAlbum };
         }
+
         public void refreshList(List<Cdalbum> list = null)
         {
             if (list != null)
@@ -56,8 +64,7 @@ namespace CD_Management_System
                     p.AlbumGenre,
                     p.Price,
                     p.Quantity,
-                    p.Description,
-                    p.ImgSrc
+                    p.Description
                 }).ToList();
             }
         }
@@ -66,13 +73,13 @@ namespace CD_Management_System
             Cdalbum cdAlbum = new Cdalbum();
             if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
             {
-                MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
+                MessageBox.Show("Please fill in the blank", "Notification", MessageBoxButtons.OK);
             }
             else
             {
                 if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
                 {
-                    MessageBox.Show("Invalid format", "Warning", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Format", "Notification", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -84,6 +91,13 @@ namespace CD_Management_System
                     cdAlbum.Description = txtDescription.Text;
                     cdAlbum.Price = Double.Parse(txtPrice.Text);
                     _albumService.Create(cdAlbum);
+                    ActivityLog log = new ActivityLog();
+                    log.ActivityDate = DateTime.Now;
+                    log.Activity = "Album Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Created CdAlbum '" + cdAlbum.AlbumName + "' at "
+                        + DateTime.Now.ToString("hh:mm:ss tt");
+                    _activityLogService.Create(log);
                     refreshList();
                 }
             }
@@ -102,7 +116,16 @@ namespace CD_Management_System
                 }
                 var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
                 if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
+                {
+                    ActivityLog log = new ActivityLog();
+                    log.ActivityDate = DateTime.Now;
+                    log.Activity = "Album Management Table (" + LoggedIn.RoleId
+                        + "-" + LoggedIn.AccountId + " "
+                        + LoggedIn.FullName + "): Deleted CdAlbum '" + cdAlbum.AlbumName + "' at "
+                        + DateTime.Now.ToString("hh:mm:ss tt");
+                    _activityLogService.Create(log);
                     _albumService.Remove(cdAlbum);
+                }
                 refreshList();
             }
         }
@@ -128,13 +151,13 @@ namespace CD_Management_System
             {
                 if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
                 {
-                    MessageBox.Show("Khong the de trong o nhap", "Thong bao", MessageBoxButtons.OK);
+                    MessageBox.Show("Please fill in the blank", "Notification", MessageBoxButtons.OK);
                 }
                 else
                 {
                     if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
                     {
-                        MessageBox.Show("Invalid format", "Warning", MessageBoxButtons.OK);
+                        MessageBox.Show("Invalid Format", "Notification", MessageBoxButtons.OK);
                     }
                     else
                     {
@@ -146,6 +169,13 @@ namespace CD_Management_System
                         cdAlbum.Description = txtDescription.Text;
                         cdAlbum.Price = Double.Parse(txtPrice.Text);
                         _albumService.Update(cdAlbum);
+                        ActivityLog log = new ActivityLog();
+                        log.ActivityDate = DateTime.Now;
+                        log.Activity = "Album Management Table (" + LoggedIn.RoleId
+                         + "-" + LoggedIn.AccountId + " "
+                         + LoggedIn.FullName + "): Updated CdAlbum with ID = '" + cdAlbum.AlbumId + "' at "
+                         + DateTime.Now.ToString("hh:mm:ss tt");
+                        _activityLogService.Create(log);
                         refreshList();
                     }
                 }
@@ -176,6 +206,45 @@ namespace CD_Management_System
                 Form song = new SongManagement();
                 song.Show();
             }
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtAlbumId.Text = "";
+            txtAlbumName.Text = "";
+            txtReleaseYear.Text = "";
+            txtAuthor.Text = "";
+            txtGenre.Text = "";
+            txtQuantity.Text = "";
+            txtDescription.Text = "";
+            txtPrice.Text = "";
+            refreshList();
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchkey = txtSearchBox.Text;
+            dgvAlbum.DataSource = new BindingSource()
+            {
+                DataSource = _albumService.GetAll().Where(p => p.AlbumName.ToLower().Contains(searchkey.ToLower()) || p.AlbumGenre.ToLower().Contains(searchkey.ToLower()) || p.Author.ToLower().Contains(searchkey.ToLower())).Select(p => new
+                {
+                    p.AlbumId,
+                    p.AlbumName,
+                    p.Author,
+                    p.ReleaseYear,
+                    p.AlbumGenre,
+                    p.Price,
+                    p.Quantity,
+                    p.Description
+                }).ToList()
+            };
         }
     }
 }

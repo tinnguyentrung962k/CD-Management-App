@@ -1,5 +1,5 @@
-﻿using Services.Models;
-using Services.Repository;
+﻿using Repository.Models;
+using Repository.Services;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Globalization;
@@ -9,26 +9,28 @@ namespace CD_Management_System
     public partial class Request : Form
     {
         private Account user;
-        static Request f;
-        private CustomerRequestRepository crr;
+        private CustomerRequestService crr;
         private CustomerRequest? req;
-        private bool editMode;
+        private bool addMode = false;
         private bool isAsc = true;
         private string filter = "RequestId";
         private string searchKey = "";
+        private int rowIndex = -1;
         public Request()
         {
-            InitializeComponent();
-            crr = new CustomerRequestRepository();
-            initializeReq();
-            updateDvg();
-
-            // change later
-            user = new Account();
-            user.AccountId = 1;
-            user.FullName = "Phạm Quang Thái";
-            user.RoleId = "EM";
-            searchBox.DataSource = new List<string> {
+            user = new AccountService().GetAll().FirstOrDefault(p => p.UserName.Equals(Login.sendUserName) && p.PassWord.Equals(Login.sendPassword));
+            if (user is null){
+                MessageBox.Show("You're not allowed to use this, please log in.", "Unable to authorize");
+                return;
+            }
+            else
+            {
+                InitializeComponent();
+                crr = new CustomerRequestService();
+                initializeReq();
+                updateDvg();
+                this.user = user;
+                searchBox.DataSource = new List<string> {
                 "RequestId",
                 "CustomerName",
                 "PhoneNumber",
@@ -37,6 +39,7 @@ namespace CD_Management_System
                 "Status",
                 "SubmitDate"
             };
+            }
         }
 
         // components
@@ -73,12 +76,8 @@ namespace CD_Management_System
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            editEnable(true);
-        }
-
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            editEnable(false);
+            addMode = !addMode;
+            addEnable(addMode);
         }
 
         private void removeBtn_Click(object sender, EventArgs e)
@@ -98,18 +97,49 @@ namespace CD_Management_System
         {
             addReq();
         }
-        private void checkBtn_Click(object sender, EventArgs e)
-        {
-            verify();
-        }
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
+            txtName.Text = "";
             txtPhone.Text = "";
             txtEmail.Text = "";
             txtDescription.Text = "";
         }
-        // functions
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            updateReq();
+        }
+
+        // Create,update,remove request
+        private void updateReq()
+        {
+            if (rowIndex < 0)
+            {
+                MessageBox.Show("You haven't selected any request!", "No request selected");
+            }
+            else
+            {
+                req.CustomerName = txtName.Text;
+                req.PhoneNumber = txtPhone.Text;
+                req.Email = txtEmail.Text;
+                req.Description = txtDescription.Text;
+                try
+                {
+                    crr.Update(req);
+                    addToLog("update");
+                    initializeReq();
+                    getReq();
+                    updateDvg();
+                    rowIndex = -1;
+                    MessageBox.Show("Request processed!", "Update done");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Can't update request due to:\n" + ex.ToString(), "Update failed");
+                }
+            }
+        }
         private void addReq()
         {
             if (verify()) return;
@@ -123,8 +153,7 @@ namespace CD_Management_System
             try
             {
                 crr.Create(cr);
-                req = crr.GetAll().Last();
-                debug();
+                req = crr.GetAll().ToList().Last();
                 addToLog("create");
                 updateDvg();
                 getReq();
@@ -142,72 +171,17 @@ namespace CD_Management_System
                 MessageBox.Show("You haven't selected any request!", "No request selected");
                 return;
             }
-            if (txtName.Text != user.FullName + "-" + user.RoleId + "-" + user.AccountId)
-            {
-                MessageBox.Show("You can't remove other's request!", "No permission");
-                return;
-            }
-            if (crr.Delete(req))
+            if (crr.Remove(req))
             {
                 MessageBox.Show("Request removed successfully!", "Removal done");
                 addToLog("remove");
                 initializeReq();
                 getReq();
                 updateDvg();
+                rowIndex = -1;
                 return;
             }
             else MessageBox.Show("Unable to remove request!", "Removal failed");
-        }
-        private void initializeReq()
-        {
-            req = new CustomerRequest();
-            req.CustomerName = "";
-            req.PhoneNumber = "";
-            req.Email = "";
-            req.Description = "";
-            req.Status = "";
-        }
-        private void editEnable(bool enable)
-        {
-            editMode = enable;
-            setBtnEnable(!enable);
-            if (enable)
-            {
-                txtName.Text = user.FullName + "-" + user.RoleId + "-" + user.AccountId;
-                txtPhone.Text = "";
-                txtPhone.PlaceholderText = "Enter your phone number here";
-                txtEmail.Text = "";
-                txtEmail.PlaceholderText = "Enter your email here";
-                txtDescription.Text = "";
-                txtDescription.PlaceholderText = "Enter your description here";
-                txtStatus.Text = "Pending";
-                txtDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            }
-            else
-            {
-                getReq();
-            }
-        }
-
-        private void setBtnEnable(bool enable)
-        {
-            if (String.IsNullOrEmpty(txtName.Text))
-            {
-                acceptBtn.Enabled = false;
-                denyBtn.Enabled = false;
-                removeBtn.Enabled = false;
-            }
-            else
-            {
-                acceptBtn.Enabled = enable;
-                denyBtn.Enabled = enable;
-                removeBtn.Enabled = enable;
-            }
-            addBtn.Visible = enable;
-            cancelBtn.Visible = !enable;
-            checkBtn.Enabled = !enable;
-            clearBtn.Enabled = !enable;
-            confirmBtn.Enabled = !enable;
         }
 
         private void setStatus(bool b)
@@ -232,6 +206,7 @@ namespace CD_Management_System
                 initializeReq();
                 getReq();
                 updateDvg();
+                rowIndex = -1;
                 MessageBox.Show("Request processed!", "Update done");
             }
             catch (Exception e)
@@ -248,6 +223,83 @@ namespace CD_Management_System
             txtDescription.Text = req.Description;
             txtStatus.Text = req.Status;
             txtDate.Text = req.SubmitDate.ToString("dd/MM/yyyy");
+        }
+
+        //Component_handler
+        private void requestDgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+            rowIndex = e.RowIndex;
+            string? requestId = requestDgv.Rows[rowIndex].Cells[0].Value.ToString();
+            req = crr.GetAll().ToList().FirstOrDefault(p => p.RequestId.ToString() == requestId);
+            getReq();
+            setBtnEnable(true);
+        }
+
+        private void always_handled(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void searchIndexChanged(object sender, EventArgs e)
+        {
+            filter = searchBox.SelectedValue.ToString();
+        }
+
+        private void searchText(object sender, EventArgs e)
+        {
+            searchKey = txtSearch.Text;
+            updateDvg();
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+            int count = txtDescription.Text.Count();
+            textCount.Text = "Count: " + count;
+
+        }
+
+        //Tools
+        private void addEnable(bool enable)
+        {
+            setBtnEnable(!enable);
+            if (enable)
+            {
+                txtName.Text = "";
+                txtPhone.Text = "";
+                txtEmail.Text = "";
+                txtDescription.Text = "";
+                txtStatus.Text = "Pending";
+                txtDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            }
+            else
+            {
+                getReq();
+            }
+        }
+
+        private void setBtnEnable(bool enable)
+        {
+            if (addMode)
+            {
+                updateBtn.Enabled = false;
+                acceptBtn.Enabled = false;
+                denyBtn.Enabled = false;
+                removeBtn.Enabled = false;
+            }
+            else
+            {
+                updateBtn.Enabled = enable;
+                acceptBtn.Enabled = enable;
+                denyBtn.Enabled = enable;
+                removeBtn.Enabled = enable;
+            }
+            addBtn.Text = addMode ? "Cancel Request" : "Add Request";
+            clearBtn.Enabled = !enable;
+            confirmBtn.Enabled = !enable;
         }
 
         public void updateDvg()
@@ -302,55 +354,29 @@ namespace CD_Management_System
                 requestDgv.DataSource = list.ToList();
             else
             {
-
                 requestDgv.DataSource = list.Where(p => p.CustomerName.ToLower().Contains(searchKey.ToLower())).ToList();
             }
         }
 
-        private void requestDgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void initializeReq()
         {
-            if (e.RowIndex < 0)
-            {
-
-            }
-            string? requestId = requestDgv.Rows[e.RowIndex].Cells[0].Value.ToString();
-            req = crr.GetAll().ToList().FirstOrDefault(p => p.RequestId.ToString() == requestId);
-
-            getReq();
-            setBtnEnable(true);
-        }
-
-        private void always_handled(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-
-        }
-
-        private void event_handled(object sender, KeyPressEventArgs e)
-        {
-            if (!editMode)
-            {
-                e.Handled = true;
-            }
-        }
-
-
-        private void searchIndexChanged(object sender, EventArgs e)
-        {
-            filter = searchBox.SelectedValue.ToString();
-        }
-
-        private void searchText(object sender, EventArgs e)
-        {
-            searchKey = txtSearch.Text;
-            updateDvg();
+            req = new CustomerRequest();
+            req.CustomerName = "";
+            req.PhoneNumber = "";
+            req.Email = "";
+            req.Description = "";
+            req.Status = "";
         }
 
         private bool verify()
         {
             string text = "";
             Regex r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            if (txtPhone.Text == "")
+            if (txtName.Text == "")
+            {
+                text += "Name can't be empty.\n";
+            }
+            else if (txtPhone.Text == "")
             {
                 text += "Phone number can't be empty.\n";
             }
@@ -382,32 +408,25 @@ namespace CD_Management_System
             return true;
         }
 
-        private void txtDescription_TextChanged(object sender, EventArgs e)
-        {
-            int count = txtDescription.Text.Count();
-            textCount.Text = "Count: " + count;
-
-        }
-
         private void addToLog(string action)
         {
-            ActivityLogRepository alr = new ActivityLogRepository();
-            string s = "Customer Request table: (" + user.RoleId + "-" + user.AccountId + " " + user.FullName + ") " + action + "s ";
+            ActivityLogService alr = new ActivityLogService();
+            string s = "Customer Request table: personnel " + user.FullName +"("+ user.RoleId + "-" + user.AccountId + ") " + action + "s ";
             switch (action)
             {
                 case "create":
                     {
-                        s += "new request( ";
+                        s += "a new request";
                         break;
                     }
                 default:
                     {
-                        s += "a request( ";
+                        s += "a request";
                         break;
                     }
             }
-            s += "id: " + req.RequestId + ", name: " + req.CustomerName + ") ";
-            s += "at " + DateTime.Now.ToString("hh:mm:ss tt");
+            s += " with id: " + req.RequestId;
+            s += " at " + DateTime.Now.ToString("hh:mm:ss tt");
             ActivityLog al = new ActivityLog();
             al.ActivityDate = DateTime.Now;
             al.Activity = s;
@@ -419,18 +438,6 @@ namespace CD_Management_System
             {
                 MessageBox.Show(ex.ToString(), "can't upload to activitylog");
             }
-        }
-        private void debug()
-        {
-            string s = "";
-            s += req.RequestId + "\n";
-            s += req.CustomerName + "\n";
-            s += req.PhoneNumber + "\n";
-            s += req.Email + "\n";
-            s += req.Description + "\n";
-            s += req.Status + "\n";
-            s += req.SubmitDate.ToString() + "\n";
-            MessageBox.Show(s);
         }
     }
 }
