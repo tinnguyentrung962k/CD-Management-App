@@ -120,6 +120,7 @@ namespace CD_Management_System
             }
             else
             {
+                if (verify()) return;
                 req.CustomerName = txtName.Text;
                 req.PhoneNumber = txtPhone.Text;
                 req.Email = txtEmail.Text;
