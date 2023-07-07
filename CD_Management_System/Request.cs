@@ -236,6 +236,7 @@ namespace CD_Management_System
             string? requestId = requestDgv.Rows[rowIndex].Cells[0].Value.ToString();
             req = crr.GetAll().ToList().FirstOrDefault(p => p.RequestId.ToString() == requestId);
             getReq();
+            addMode = false;
             setBtnEnable(true);
         }
 
