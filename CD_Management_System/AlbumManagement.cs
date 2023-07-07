@@ -132,6 +132,10 @@ namespace CD_Management_System
 
         private void dgvAlbum_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
             var id = dgvAlbum[0, e.RowIndex].Value;
             var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(id)).FirstOrDefault();
             txtAlbumId.Text = id.ToString();
@@ -199,6 +203,10 @@ namespace CD_Management_System
 
         private void dgvAlbum_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
             sendAlbumID = (int)dgvAlbum[0, e.RowIndex].Value;
             var album = _albumService.GetAll().Where(p => p.AlbumId == sendAlbumID).FirstOrDefault();
             if (album != null)

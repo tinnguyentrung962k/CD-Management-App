@@ -75,5 +75,9 @@ namespace CD_Management_System
             txtPassword.Text = String.Empty;
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
