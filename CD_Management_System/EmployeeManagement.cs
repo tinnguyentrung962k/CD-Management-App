@@ -54,6 +54,7 @@ namespace CD_Management_System
             {
                 return;
             }
+            txtUserName.ReadOnly = true;
             var id = dgvEmployee[0, e.RowIndex].Value;
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
