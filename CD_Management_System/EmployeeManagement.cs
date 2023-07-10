@@ -23,6 +23,8 @@ namespace CD_Management_System
         public EmployeeManagement()
         {
             InitializeComponent();
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
             getAllEmployees();
 
         }
@@ -48,7 +50,13 @@ namespace CD_Management_System
 
         private void chooseEmployee(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
             var id = dgvEmployee[0, e.RowIndex].Value;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
             var selectedEmployee = _accountService.GetAll()
                 .Where(p => p.AccountId.Equals(id))
                 .FirstOrDefault();
@@ -212,6 +220,20 @@ namespace CD_Management_System
                 }).ToList()
             };
 
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtAccountId.Text = "";
+            txtAddress.Text = "";
+            txtEmail.Text = "";
+            txtFullName.Text = "";
+            txtPassword.Text = "";
+            txtPhoneNumber.Text = "";
+            txtUserName.Text = "";
+            refreshList();
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
         }
     }
 }

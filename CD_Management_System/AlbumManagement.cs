@@ -44,6 +44,8 @@ namespace CD_Management_System
                 p.Description
             }).ToList(); ;
             dgvAlbum.DataSource = new BindingSource { DataSource = listAlbum };
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         public void refreshList(List<Cdalbum> list = null)
@@ -71,15 +73,22 @@ namespace CD_Management_System
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Cdalbum cdAlbum = new Cdalbum();
-            if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
+            if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == ""|| txtDescription.Text == "")
             {
                 MessageBox.Show("Please fill in the blank", "Notification", MessageBoxButtons.OK);
             }
             else
             {
-                if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
+                if (!checkNumRegex(txtReleaseYear.Text))
                 {
-                    MessageBox.Show("Invalid Format", "Notification", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Format Release Year", "Notification", MessageBoxButtons.OK);
+                }
+                if (!checkNumRegex(txtQuantity.Text)) {
+                    MessageBox.Show("Invalid Format Quantity", "Notification", MessageBoxButtons.OK);
+                }
+                if(!checkNumRegex(txtPrice.Text))
+                {
+                    MessageBox.Show("Invalid Format Price", "Notification", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -136,6 +145,8 @@ namespace CD_Management_System
             {
                 return;
             }
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
             var id = dgvAlbum[0, e.RowIndex].Value;
             var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(id)).FirstOrDefault();
             txtAlbumId.Text = id.ToString();
@@ -153,34 +164,46 @@ namespace CD_Management_System
             var cdAlbum = _albumService.GetAll().Where(p => p.AlbumId.Equals(Int32.Parse(txtAlbumId.Text))).FirstOrDefault();
             if (Int32.Parse(txtAlbumId.Text).Equals(cdAlbum.AlbumId))
             {
-                if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "")
+                if (txtAlbumName.Text == "" || txtReleaseYear.Text == "" || txtAuthor.Text == "" || txtGenre.Text == "" || txtQuantity.Text == "" || txtPrice.Text == "" || txtDescription.Text == "")
                 {
                     MessageBox.Show("Please fill in the blank", "Notification", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (!checkNumRegex(txtReleaseYear.Text) || !checkNumRegex(txtQuantity.Text) || !checkNumRegex(txtPrice.Text))
+                    if (!checkNumRegex(txtReleaseYear.Text))
                     {
-                        MessageBox.Show("Invalid Format", "Notification", MessageBoxButtons.OK);
+                        MessageBox.Show("Invalid Format Release Year", "Notification", MessageBoxButtons.OK);
                     }
-                    else
-                    {
-                        cdAlbum.AlbumName = txtAlbumName.Text;
-                        cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
-                        cdAlbum.Author = txtAuthor.Text;
-                        cdAlbum.AlbumGenre = txtGenre.Text;
-                        cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
-                        cdAlbum.Description = txtDescription.Text;
-                        cdAlbum.Price = Double.Parse(txtPrice.Text);
-                        _albumService.Update(cdAlbum);
-                        ActivityLog log = new ActivityLog();
-                        log.ActivityDate = DateTime.Now;
-                        log.Activity = "Album Management Table (" + LoggedIn.RoleId
-                         + "-" + LoggedIn.AccountId + " "
-                         + LoggedIn.FullName + "): Updated CdAlbum with ID = '" + cdAlbum.AlbumId + "' at "
-                         + DateTime.Now.ToString("hh:mm:ss tt");
-                        _activityLogService.Create(log);
-                        refreshList();
+                    else {
+                        if (!checkNumRegex(txtQuantity.Text))
+                        {
+                            MessageBox.Show("Invalid Format Quantity", "Notification", MessageBoxButtons.OK);
+                        }
+                        else {
+                            if (!checkNumRegex(txtPrice.Text))
+                            {
+                                MessageBox.Show("Invalid Format Price", "Notification", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                cdAlbum.AlbumName = txtAlbumName.Text;
+                                cdAlbum.ReleaseYear = Int32.Parse(txtReleaseYear.Text);
+                                cdAlbum.Author = txtAuthor.Text;
+                                cdAlbum.AlbumGenre = txtGenre.Text;
+                                cdAlbum.Quantity = Int32.Parse(txtQuantity.Text);
+                                cdAlbum.Description = txtDescription.Text;
+                                cdAlbum.Price = Double.Parse(txtPrice.Text);
+                                _albumService.Update(cdAlbum);
+                                ActivityLog log = new ActivityLog();
+                                log.ActivityDate = DateTime.Now;
+                                log.Activity = "Album Management Table (" + LoggedIn.RoleId
+                                 + "-" + LoggedIn.AccountId + " "
+                                 + LoggedIn.FullName + "): Updated CdAlbum with ID = '" + cdAlbum.AlbumId + "' at "
+                                 + DateTime.Now.ToString("hh:mm:ss tt");
+                                _activityLogService.Create(log);
+                                refreshList();
+                            }
+                        }
                     }
                 }
             }
@@ -228,6 +251,8 @@ namespace CD_Management_System
             txtDescription.Text = "";
             txtPrice.Text = "";
             refreshList();
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
 
         }
 

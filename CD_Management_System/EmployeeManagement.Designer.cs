@@ -51,13 +51,14 @@
             label8 = new Label();
             txtPassword = new TextBox();
             btnBack = new Button();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             SuspendLayout();
             // 
             // dgvEmployee
             // 
             dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployee.Location = new Point(38, 49);
+            dgvEmployee.Location = new Point(38, 61);
             dgvEmployee.Margin = new Padding(3, 2, 3, 2);
             dgvEmployee.Name = "dgvEmployee";
             dgvEmployee.RowHeadersWidth = 51;
@@ -184,7 +185,7 @@
             // Search
             // 
             Search.AutoSize = true;
-            Search.Location = new Point(524, 203);
+            Search.Location = new Point(527, 198);
             Search.Name = "Search";
             Search.Size = new Size(234, 30);
             Search.TabIndex = 22;
@@ -193,7 +194,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(537, 238);
+            txtSearch.Location = new Point(537, 233);
             txtSearch.Margin = new Padding(3, 2, 3, 2);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(212, 23);
@@ -215,7 +216,7 @@
             btnUpdate.Location = new Point(487, 325);
             btnUpdate.Margin = new Padding(3, 2, 3, 2);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(143, 36);
+            btnUpdate.Size = new Size(143, 46);
             btnUpdate.TabIndex = 25;
             btnUpdate.Text = "Update Employee";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -226,7 +227,7 @@
             btnDelete.Location = new Point(697, 325);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(132, 36);
+            btnDelete.Size = new Size(132, 46);
             btnDelete.TabIndex = 26;
             btnDelete.Text = "Delete Employee";
             btnDelete.UseVisualStyleBackColor = true;
@@ -234,10 +235,10 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(772, 234);
+            btnSearch.Location = new Point(772, 228);
             btnSearch.Margin = new Padding(3, 2, 3, 2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(122, 28);
+            btnSearch.Size = new Size(122, 31);
             btnSearch.TabIndex = 27;
             btnSearch.Text = "Search Employee";
             btnSearch.UseVisualStyleBackColor = true;
@@ -261,19 +262,30 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(697, 402);
+            btnBack.Location = new Point(762, 17);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(132, 36);
+            btnBack.Size = new Size(132, 35);
             btnBack.TabIndex = 30;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(697, 400);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(132, 38);
+            btnRefresh.TabIndex = 31;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(906, 490);
+            Controls.Add(btnRefresh);
             Controls.Add(btnBack);
             Controls.Add(txtPassword);
             Controls.Add(label8);
@@ -330,5 +342,6 @@
         private Label label8;
         private TextBox txtPassword;
         private Button btnBack;
+        private Button btnRefresh;
     }
 }
